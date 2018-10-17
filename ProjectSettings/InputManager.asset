@@ -38,13 +38,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire1
-    descriptiveName: 
+    m_Name: Spew
+    descriptiveName: Spew banana parts at your enemies
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left ctrl
+    positiveButton: q
     altNegativeButton: 
-    altPositiveButton: mouse 0
+    altPositiveButton: mouse 2
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -54,11 +54,11 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire2
-    descriptiveName: 
+    m_Name: Slap
+    descriptiveName: Banana Slap
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left alt
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: mouse 1
     gravity: 1000
@@ -70,13 +70,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire3
-    descriptiveName: 
+    m_Name: Possess
+    descriptiveName: Possess an Enemy
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left shift
+    positiveButton: r
     altNegativeButton: 
-    altPositiveButton: mouse 2
+    altPositiveButton: mouse 3
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

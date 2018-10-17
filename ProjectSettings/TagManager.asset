@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Posessable
   - Enemy
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - Background
   - Foreground
+  - Ground
   - Player
-  - Enemy
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -42,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3155146649
+    locked: 0
+  - name: Character
+    uniqueID: 989434673
+    locked: 0
+  - name: Foreground
+    uniqueID: 903851429
+    locked: 0
+  - name: UI
+    uniqueID: 2942163431
     locked: 0
