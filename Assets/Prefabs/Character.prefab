@@ -212,6 +212,7 @@ MonoBehaviour:
   spewSpeed: 20
   spewDamage: 20
   slapRange: 2
+  possessRange: 6
   me: {fileID: 1934354566699002}
   maxSpeed: 5
   jumpForce: 800

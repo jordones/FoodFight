@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 	public float spewSpeed = 20f;
 	public int spewDamage = 20;
 	public float slapRange = 2f;
+	public float possessRange = 6f;
+	
     public GameObject me;
 
 
@@ -60,8 +62,7 @@ public class PlayerController : MonoBehaviour {
 
 	void handlePossess() {
 		Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-		float distance = possessFab.GetComponent<Renderer>().bounds.size.x;
-		RaycastHit2D possesHit = Physics2D.Raycast(transform.position, direction, distance, 1  << LayerMask.NameToLayer("Enemies"));
+		RaycastHit2D possesHit = Physics2D.Raycast(transform.position, direction, possessRange, 1  << LayerMask.NameToLayer("Enemies"));
 		if (possesHit.collider != null) {
 			GameObject enemyHit = possesHit.collider.gameObject;
 			Vector3 tmp = transform.position;
@@ -108,12 +109,17 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			slapPos.x -= slapFab.transform.localScale.x + 0.1f;
 		}
-		RaycastHit2D slapHit = Physics2D.Linecast(transform.position, slapPos, 1  << LayerMask.NameToLayer("Enemies"));
-		if (slapHit.collider != null) {
-			Debug.Log("Enemy Smack! (POW)");
-			Debug.Log(slapHit.collider.gameObject.tag);
-			// slapHit.collider.gameObject.TakeDamage(attack);
+		RaycastHit2D[] slapHits = Physics2D.LinecastAll(transform.position, slapPos, 1  << LayerMask.NameToLayer("Enemies"));
+
+        foreach (var slapHit in slapHits)
+		{
+			if (slapHit.collider != null) {
+				Debug.Log("Enemy Smack! (POW)");
+				Debug.Log(slapHit.collider.gameObject.name);
+				// slapHit.collider.gameObject.TakeDamage(attack);
+			}	
 		}
+
 		StartCoroutine(LinecastSlapDebounce());
 		
 	}
