@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Spew : MonoBehaviour {
 
-    public float damage = 1f;
+    public int damage = 25;
 
 
 	// Use this for initialization
 	void Start() {
 		// Destory this thing after n seconds if it does not collide with anything
-		Debug.Log("Kill me please!");
 		Destroy(gameObject, 1.5f);
 	}
 
@@ -19,7 +18,7 @@ public class Spew : MonoBehaviour {
 
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
-			// col.gameObject.GetComponent<EnemyStats>.TakeDamage();
+			col.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
 			Debug.Log("Enemy Hit");
 		    Destroy(gameObject);
 		} else if (col.tag != "Character") {

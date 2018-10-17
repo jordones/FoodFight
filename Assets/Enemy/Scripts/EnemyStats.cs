@@ -8,6 +8,8 @@ public class EnemyStats : MonoBehaviour {
     public int attack = 25;
     public GameObject me;
 
+    public GameObject enemyFab;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,18 +25,27 @@ public class EnemyStats : MonoBehaviour {
 
     public void TakeDamage (int amount) {
         health -= amount;
+        Debug.Log("Enemy damage from " + (health+amount) + " to " + health);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
 
         Collider2D collider = collision.collider;
 
-        if (collider.tag == "Player") {
-            collider.gameObject.GetComponent<Player>().TakeDamage(attack);
+        if (collider.tag == "Character") {
+            collider.gameObject.GetComponent<Character>().TakeDamage(attack);
         }
     }
 
     private void Die () {
-        Destroy(me);
+        Debug.Log("Enemy Death");
+        SpawnEnemy(new Vector3(1,1,0), SimpleMovement.BEHAVIOUR.AGGRO); 
+        Destroy(me);    
+    }
+
+    private void SpawnEnemy(Vector3 spawnPos, SimpleMovement.BEHAVIOUR behaviour) {
+        GameObject newEnemy = Instantiate(enemyFab, spawnPos, Quaternion.Euler(new Vector3 (0,0,0))) as GameObject;
+        newEnemy.GetComponent<SimpleMovement>().behaviour = SimpleMovement.BEHAVIOUR.AGGRO;
+        newEnemy.GetComponent<EnemyStats>().health = 100;
     }
 }

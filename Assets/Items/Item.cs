@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour {
 
-	public PlayerController character;
+	public Character character;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +18,7 @@ public abstract class Item : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "Character") {
 			// Item effect gets added here for now it will just be removed
-			character = col.gameObject.GetComponent<PlayerController>();
+			character = col.gameObject.GetComponent<Character>();
 			ModifyCharacter();
 			Destroy(gameObject);
 			

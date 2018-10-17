@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50634035379714440}
   - component: {fileID: 114941152083547276}
   - component: {fileID: 114654318679254706}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   health: 100
   attack: 25
   me: {fileID: 1766535486232634}
+  enemyFab: {fileID: 1766535486232634}
 --- !u!114 &114941152083547276
 MonoBehaviour:
   m_ObjectHideFlags: 1
