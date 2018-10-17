@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &347461320
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.1171875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062087057534724, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a463087738e25d4a889357134a7937e, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &516126968
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +256,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &781760718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1155556493796016, guid: 8a463087738e25d4a889357134a7937e,
+    type: 2}
+  m_PrefabInternal: {fileID: 347461320}
+--- !u!114 &781760719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781760718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f47b9692911ab4d9f664b28fc617a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
 --- !u!1 &1405058965
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +643,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4302345188609296, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860640140978896, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50910267586119062, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+        type: 2}
+      propertyPath: slapFab
+      value: 
+      objectReference: {fileID: 1319740153191642, guid: 7cea55a0442cee14ca97dee9e9ff6ee3,
+        type: 2}
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+        type: 2}
+      propertyPath: possessFab
+      value: 
+      objectReference: {fileID: 1437910598624610, guid: 8d9b2faf668834642af9d5e36d0d94d5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
   m_IsPrefabAsset: 0
@@ -751,9 +840,9 @@ GameObject:
   - component: {fileID: 2093276179}
   - component: {fileID: 2093276178}
   - component: {fileID: 2093276177}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
