@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class Character : MonoBehaviour {
 
 	
 	public int health = 100;
-    public int attack = 50;
 	public int speed = 5;
 	public float spewSpeed = 20f;
 	public int spewDamage = 20;
+	public int slapDamage = 50;
 	public float slapRange = 2f;
 	public float possessRange = 6f;
 	
@@ -69,6 +69,9 @@ public class PlayerController : MonoBehaviour {
 			transform.position = enemyHit.transform.position;
 			enemyHit.transform.position = tmp;
 			// swap hp
+			int tempHp = enemyHit.GetComponent<EnemyStats>().health;
+			enemyHit.GetComponent<EnemyStats>().health = health;
+			health = tempHp;
 		}
 	}
 
@@ -116,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 			if (slapHit.collider != null) {
 				Debug.Log("Enemy Smack! (POW)");
 				Debug.Log(slapHit.collider.gameObject.name);
-				// slapHit.collider.gameObject.TakeDamage(attack);
+				slapHit.collider.gameObject.GetComponent<EnemyStats>().TakeDamage(slapDamage);
 			}	
 		}
 
@@ -159,21 +162,14 @@ public class PlayerController : MonoBehaviour {
 
     public void TakeDamage (int amount) {
         health -= amount;
+		Debug.Log(health);
 		if (health <= 0) {
             Die();
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-
-        Collider2D collider = collision.collider;
-
-        // if (collider.tag == "Player") {
-        //     collider.gameObject.GetComponent<Player>().TakeDamage(attack);
-        // }
-    }
-
     private void Die () {
+		Debug.Log("Character Death");
         Destroy(me);
     }
 
