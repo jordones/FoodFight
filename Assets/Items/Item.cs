@@ -16,6 +16,7 @@ public abstract class Item : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Collision on the item");
 		if (col.tag == "Character") {
 			// Item effect gets added here for now it will just be removed
 			character = col.gameObject.GetComponent<Character>();
