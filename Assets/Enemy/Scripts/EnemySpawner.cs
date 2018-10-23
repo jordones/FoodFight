@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public float spawnTime = 3f;
-    private int numEnemyTypes = 2;    // Number of each different enemy type  
+    public string[] enemyTypes;    // Number of each different enemy type  
     void Start()
     {
         // Run the Spawn method ever spawn time in 3 seconds every 3 seconds
@@ -27,17 +27,8 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject getRandomEnemy()
     {
-        int enemyType = Random.Range(0, numEnemyTypes);
-        GameObject enemy = null;
-        switch (enemyType)
-        {
-            case 0:
-                enemy = Resources.Load("Enemy") as GameObject;
-                break;
-            case 1:
-                enemy = Resources.Load("Enemy2") as GameObject;
-                break;
-        }
-        return enemy;
+        int enemyTypeIndex = Random.Range(0, enemyTypes.Length);
+        string enemyType = enemyTypes[enemyTypeIndex];
+        return Resources.Load(enemyType) as GameObject;
     }
 }
