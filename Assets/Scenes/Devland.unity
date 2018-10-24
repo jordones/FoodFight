@@ -155,6 +155,62 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a463087738e25d4a889357134a7937e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &404013264
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.22709745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947192385265498, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942864986026698, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+      propertyPath: m_Name
+      value: EnemySpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
+        type: 2}
+      propertyPath: spawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
+        type: 2}
+      propertyPath: enemyTypes.Array.data[0]
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &516126968
 GameObject:
   m_ObjectHideFlags: 0
