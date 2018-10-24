@@ -182,4 +182,8 @@ public class Character : MonoBehaviour {
 		yield return new WaitForSeconds(0.25f);
 		slapDebounce = false;
 	}
+
+	public int getHealth() {
+		return health;
+	}
 }

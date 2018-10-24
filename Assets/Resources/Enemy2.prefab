@@ -103,6 +103,7 @@ MonoBehaviour:
   health: 100
   attack: 25
   me: {fileID: 1759974975628816}
+  enemyFab: {fileID: 1759974975628816}
 --- !u!114 &114566428002443716
 MonoBehaviour:
   m_ObjectHideFlags: 1
