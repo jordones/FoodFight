@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1000391688743",
+    "firebase_url": "https://cis4250-rot.firebaseio.com",
+    "project_id": "cis4250-rot",
+    "storage_bucket": "cis4250-rot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000391688743:android:72e46948ad2d97ec",
+        "android_client_info": {
+          "package_name": "com.cis4250.rot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000391688743-mcfs9o8gfcdfdjj2s8roi526tc9j8a9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCqvweHWxFn1CVA4xKf-Ssp8848dV6Hes"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
