@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour {
 
 	public Character character;
+
 	// Use this for initialization
 	void Start () {
 		

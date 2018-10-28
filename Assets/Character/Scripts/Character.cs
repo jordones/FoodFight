@@ -170,7 +170,7 @@ public class Character : MonoBehaviour {
 
     private void Die () {
 		Debug.Log("Character Death");
-        Destroy(me);
+        Destroy(gameObject);
     }
 
 	private IEnumerator DestroySlap(GameObject slap) {

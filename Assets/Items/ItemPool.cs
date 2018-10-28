@@ -1,32 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class ItemPool: MonoBehaviour {
-
-    public string[] pool;
+    public bool ready;
+    public GameObject[] items;
+    public List<int> pool = new List<int>();
     public static ItemPool instance = null;
-
 
     void Awake() {
         // Singleton instance; ensures that only one ItemPool can exist at a time
         if (instance == null) {
-
-            instance = new ItemPool();
-        } else {
             instance = this;
-        }
+            StartCoroutine(InitPool());
 
+            ready = true;
+        } else {
+            Destroy(gameObject);
+        }
     }
 
+    IEnumerator InitPool()
+    {
+        Debug.Log("Waiting...");
+        yield return new WaitUntil(() => UserManager.instance != null && UserManager.instance.ready); //Wait until UserManager is initialized
+        Debug.Log("Moving on...");
+        pool = UserManager.instance.items;
+    }
     void Start() {
-        // Probably grab items from the DB?
+        pool.Add(0);
     }
 
     public GameObject GetRandomItem() {
-        // Hard coded for now.. need to randomly return an item from the pool
-        int myRand = Random.Range(1, 3);
-        string randomItemName = "Item" + myRand.ToString();
-        return Resources.Load(randomItemName) as GameObject;
+        return items[pool[Random.Range(0, pool.Count)]];
     }
 }
