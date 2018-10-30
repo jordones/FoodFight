@@ -40,7 +40,7 @@ public class EnemyStats : MonoBehaviour {
     private void Die () {
         Debug.Log("Enemy Death");
         SpawnEnemy(new Vector3(1,1,0), SimpleMovement.BEHAVIOUR.AGGRO); 
-        Destroy(me);    
+        Destroy(gameObject);    
     }
 
     private void SpawnEnemy(Vector3 spawnPos, SimpleMovement.BEHAVIOUR behaviour) {

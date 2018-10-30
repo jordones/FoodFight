@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour {
 
-    public ItemPool itemPool;
 	// Use this for initialization
 	void Awake () {
 	}
 	
     void Start() {
         Debug.Log("Item Spawn: Should only occur once");
-        Spawn(GetSpawnableItem());
+        StartCoroutine(Spawn(GetSpawnableItem()));
     }
-	
 
     private GameObject GetSpawnableItem() {
         Debug.Log("Loading Item to Spawn");
@@ -21,10 +19,11 @@ public class ItemSpawner : MonoBehaviour {
         // In future, it should ask itempool for a random object to load
         // e.g.
 
-        return itemPool.GetRandomItem();
+        return ItemPool.instance.GetRandomItem();
     }
 
-    private void Spawn(GameObject item) {
+    private IEnumerator Spawn(GameObject item) {
+        yield return new WaitUntil(() => ItemPool.instance != null && ItemPool.instance.ready); //Wait until ItemPool is ready
         Debug.Log("Spawning Item to Screen");
         Instantiate(item, transform.position, transform.rotation);
     }
