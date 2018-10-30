@@ -10,20 +10,12 @@ public class ItemSpawner : MonoBehaviour {
 	
     void Start() {
         Debug.Log("Item Spawn: Should only occur once");
-        StartCoroutine(Spawn(GetSpawnableItem()));
+        StartCoroutine(Spawn());
     }
 
-    private GameObject GetSpawnableItem() {
-        Debug.Log("Loading Item to Spawn");
-        // This currently just returns a statically set resource
-        // In future, it should ask itempool for a random object to load
-        // e.g.
-
-        return ItemPool.instance.GetRandomItem();
-    }
-
-    private IEnumerator Spawn(GameObject item) {
+    private IEnumerator Spawn() {
         yield return new WaitUntil(() => ItemPool.instance != null && ItemPool.instance.ready); //Wait until ItemPool is ready
+        GameObject item = ItemPool.instance.GetRandomItem();
         Debug.Log("Spawning Item to Screen");
         Instantiate(item, transform.position, transform.rotation);
     }

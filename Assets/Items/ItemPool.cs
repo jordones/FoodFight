@@ -14,8 +14,6 @@ public class ItemPool: MonoBehaviour {
         if (instance == null) {
             instance = this;
             StartCoroutine(InitPool());
-
-            ready = true;
         } else {
             Destroy(gameObject);
         }
@@ -27,9 +25,8 @@ public class ItemPool: MonoBehaviour {
         yield return new WaitUntil(() => UserManager.instance != null && UserManager.instance.ready); //Wait until UserManager is initialized
         Debug.Log("Moving on...");
         pool = UserManager.instance.items;
-    }
-    void Start() {
-        pool.Add(0);
+        ready = true;
+
     }
 
     public GameObject GetRandomItem() {

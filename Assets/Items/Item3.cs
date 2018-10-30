@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item2 : Item {
+public class Item3 : Item {
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,6 @@ public class Item2 : Item {
 		
 	}
 	public override void ModifyCharacter() {
-		character.slapDamage *= 2;
-		character.spewDamage *= 2;
+		character.health -= 27;
 	}
 }
