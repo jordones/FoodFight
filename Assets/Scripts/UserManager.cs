@@ -96,17 +96,21 @@ public class UserManager : MonoBehaviour {
             .GetValueAsync()
             .ContinueWith(task => {
                 if (task.IsFaulted) {
-                    Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                    Debug.LogError("GetValueAsync encountered an error: " + task.Exception);
                     return default(T);
                 }
                 else if (task.IsCompleted) {
                     DataSnapshot snapshot = task.Result;
                     return (T) snapshot.Value;
                 }
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                Debug.LogError("GetValueAsync encountered an error: " + task.Exception);
                 return default(T);
         });
         return t.Result;
+    }
+
+    private Task<Firebase.Database.DataSnapshot> getFirebaseAsync<T>(string path, string item) {
+         return db.Child(path).Child(item).GetValueAsync();
     }
 
     private void setFirebaseScalar<T>(string path, string item, T value) {
@@ -146,9 +150,8 @@ public class UserManager : MonoBehaviour {
             GUI.Label(new Rect(10, 10, 100, 30), "Logged in: None");
         }
         GUI.Label(new Rect(10, 50, 200, 30), "Deaths: " + deaths);
-        GUI.Label(new Rect(10, 100, 200, 30), "Runs" + runs);
-        GUI.Label(new Rect(10, 150, 200, 30), "Items" + items);
-
+        GUI.Label(new Rect(10, 100, 200, 30), "Runs: " + runs);
+        GUI.Label(new Rect(10, 150, 200, 30), "Items: [" + String.Join(", ", items) + "]");
     }
 
 	void Update () {
@@ -173,10 +176,57 @@ public class UserManager : MonoBehaviour {
         setFirebaseList(user.UserId, "items", items);
     }
 
-    public void LoadFirebase() {
-        Debug.Log("Loading from Firebase");
-        deaths = getFirebaseValue<int>(user.UserId, "deaths");
-        runs = getFirebaseValue<int>(user.UserId, "runs");
+    // public void LoadFirebase() {
+    //     Debug.Log("Loading from Firebase");
+    //     deaths = Convert.ToInt32(getFirebaseValue<long>(user.UserId, "deaths"));
+    //     runs = Convert.ToInt32(getFirebaseValue<long>(user.UserId, "runs"));
+    //     items = getFirebaseValue<List<long>>(user.UserId, "items").ConvertAll(i => Convert.ToInt32(i));
+    // }
+
+    public IEnumerator LoadFirebaseAsync() {
+        Debug.Log("Loading from Firebase Async");
+        Task<Firebase.Database.DataSnapshot> tDeaths = getFirebaseAsync<int>(user.UserId, "deaths");
+        Task<Firebase.Database.DataSnapshot> tRuns = getFirebaseAsync<int>(user.UserId, "runs");
+        Task<Firebase.Database.DataSnapshot> tItems = getFirebaseAsync<List<long>>(user.UserId, "items");
+
+        tDeaths.ContinueWith(task => {
+            Debug.Log("Loading from Firebase Async - deaths task: " + task.Status + "- " + task.IsCompleted);
+            if (task.IsFaulted) {
+                Debug.LogError("GetValueAsync encountered an error: " + task.Exception);
+            }
+            else if (task.IsCompleted) {
+                Debug.Log("Loading from Firebase Async - changing deaths, current: " + deaths);
+                DataSnapshot snapshot = task.Result;
+                // deaths = (int) snapshot.Value;
+                deaths = Convert.ToInt32(snapshot.Value);
+            }
+        });
+
+        tRuns.ContinueWith(task => {
+            Debug.Log("Loading from Firebase Async - runs task: " + task.Status + "- " + task.IsCompleted);
+            if (task.IsFaulted) {
+                Debug.LogError("GetValueAsync encountered an error: " + task.Exception);
+            }
+            else if (task.IsCompleted) {
+                Debug.Log("Loading from Firebase Async - changing runs, current: " + runs);
+                DataSnapshot snapshot = task.Result;
+                runs = Convert.ToInt32(snapshot.Value);
+            }
+        });
+
+        tItems.ContinueWith(task => {
+            Debug.Log("Loading from Firebase Async - items task: " + task.Status + "- " + task.IsCompleted);
+            if (task.IsFaulted) {
+                Debug.LogError("GetValueAsync encountered an error: " + task.Exception);
+            }
+            else if (task.IsCompleted) {
+                Debug.Log("Loading from Firebase Async - changing items, current: " + items);
+                DataSnapshot snapshot = task.Result;
+                items = ((List<object>)snapshot.GetValue(false)).ConvertAll(i => Convert.ToInt32(i));
+            }
+        });
+
+        yield return new WaitUntil(() => tDeaths.IsCompleted && tRuns.IsCompleted && tItems.IsCompleted);
     }
 
     public void SaveLocal() {

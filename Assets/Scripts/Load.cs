@@ -15,6 +15,7 @@ public class Load : MonoBehaviour {
 	}
 
 	public void LoadUser() {
-		UserManager.instance.LoadFirebase();
+		Debug.Log("Attempting load...");
+		StartCoroutine(UserManager.instance.LoadFirebaseAsync());
 	}
 }
