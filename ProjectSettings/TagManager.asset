@@ -41,11 +41,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 3155146649
+    locked: 0
+  - name: PreBackground
+    uniqueID: 1574018863
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Character
     uniqueID: 989434673
