@@ -13,8 +13,6 @@ public class Character : MonoBehaviour {
 	public float slapRange = 2f;
 	public float possessRange = 6f;
 	
-    public GameObject me;
-
 
     private float moveForce = 51f;
 	public float maxSpeed = 3f;
@@ -170,6 +168,7 @@ public class Character : MonoBehaviour {
 
     private void Die () {
 		Debug.Log("Character Death");
+		StartCoroutine(LoadScene.AsyncLoadScene("MainMenu"));
         Destroy(gameObject);
     }
 
@@ -185,5 +184,12 @@ public class Character : MonoBehaviour {
 
 	public int getHealth() {
 		return health;
+	}
+
+	void OnGUI () {
+		GUI.Label(new Rect (Screen.width - 150,50,100,50), "HP: " + health);
+		GUI.Label(new Rect (Screen.width - 150,100,100,50), "Slap Damage: " + slapDamage);
+		GUI.Label(new Rect (Screen.width - 150,150,100,50), "Spew Damage: " + spewDamage);
+		GUI.Label(new Rect (Screen.width - 150,200,100,50), "Speed: " + maxSpeed);
 	}
 }

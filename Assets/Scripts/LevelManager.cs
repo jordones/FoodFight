@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.Label(new Rect (Screen.width - 100,0,100,50), "Kills: " + killed + "/" + goal);
+		GUI.Label(new Rect (Screen.width - 150,0,100,50), "Kills: " + killed + "/" + goal);
 	}
 
 	public IEnumerator EndLevel() {

@@ -6,9 +6,6 @@ public class EnemyStats : MonoBehaviour {
 
     public int health = 100;
     public int attack = 25;
-    public GameObject me;
-
-    public GameObject enemyFab;
 
 	// Use this for initialization
 	void Start () {
@@ -41,5 +38,11 @@ public class EnemyStats : MonoBehaviour {
         Debug.Log("Enemy Death");
         LevelManager.instance.Killed();
         Destroy(gameObject);    
+    }
+
+    void OnGUI() {
+        Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
     }
 }
