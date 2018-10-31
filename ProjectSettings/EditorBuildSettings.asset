@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Devland.unity
     guid: c8ada576b7dc6430b98761bdabfe0955
+  - enabled: 1
+    path: Assets/Scenes/Level_One.unity
+    guid: dce57922618b642c38f5b4a7e9afb240
   m_configObjects: {}
