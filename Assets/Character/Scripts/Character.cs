@@ -6,6 +6,7 @@ public class Character : MonoBehaviour {
 
 	
 	public int health = 100;
+	public int heathMinus = 10;
 	public int speed = 5;
 	public float spewSpeed = 20f;
 	public int spewDamage = 20;
@@ -31,18 +32,23 @@ public class Character : MonoBehaviour {
 
 	private bool facingRight = true;
 
+
 	// Use this for initialization
 	void Awake () {
 		// anim = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
 		groundCheck = transform.Find("groundCheck");
 	}
+
+    void Start() {
+		InvokeRepeating("drainHealth", 0, 2f);
+	} 
 	
 	// Update is called once per frame
 	void Update () {
 
 		// Check if the character is on the ground
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1  << LayerMask.NameToLayer("Ground"));
+		grounded = Physics2D.Linecast(transform.position, groundCheck.position, (1  << LayerMask.NameToLayer("Ground")) | (1 << LayerMask.NameToLayer("Enemies")) );
 
 		// Jump, only if the character is on the ground
 		if (Input.GetButtonDown("Jump") && grounded) {
@@ -60,9 +66,9 @@ public class Character : MonoBehaviour {
 
 	void handlePossess() {
 		Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-		RaycastHit2D possesHit = Physics2D.Raycast(transform.position, direction, possessRange, 1  << LayerMask.NameToLayer("Enemies"));
+		RaycastHit2D possesHit = Physics2D.Raycast(transform.position, direction, possessRange, 1  << LayerMask.NameToLayer("Possessable"));
 		if (possesHit.collider != null) {
-			GameObject enemyHit = possesHit.collider.gameObject;
+			GameObject enemyHit = possesHit.collider.transform.parent.gameObject;
 			Vector3 tmp = transform.position;
 			transform.position = enemyHit.transform.position;
 			enemyHit.transform.position = tmp;
@@ -122,8 +128,7 @@ public class Character : MonoBehaviour {
 		}
 
 		StartCoroutine(LinecastSlapDebounce());
-		
-	}
+	   }
 	}
 	void FixedUpdate() {
         // horizontal movement
@@ -187,9 +192,16 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.Label(new Rect (Screen.width - 150,50,100,50), "HP: " + health);
-		GUI.Label(new Rect (Screen.width - 150,100,100,50), "Slap Damage: " + slapDamage);
-		GUI.Label(new Rect (Screen.width - 150,150,100,50), "Spew Damage: " + spewDamage);
-		GUI.Label(new Rect (Screen.width - 150,200,100,50), "Speed: " + maxSpeed);
+		Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
+		// GUI.Label(new Rect (Screen.width - 150,50,100,50), "HP: " + health);
+		GUI.Label(new Rect (Screen.width - 150,50,100,50), "Slap Damage: " + slapDamage);
+		GUI.Label(new Rect (Screen.width - 150,100,100,50), "Spew Damage: " + spewDamage);
+		GUI.Label(new Rect (Screen.width - 150,150,100,50), "Speed: " + maxSpeed);
+	}
+
+	void drainHealth() {
+		TakeDamage(heathMinus);
 	}
 }
