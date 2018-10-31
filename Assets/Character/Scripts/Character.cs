@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-	
+
 	public int health = 100;
 	public int heathMinus = 10;
 	public int speed = 5;
@@ -41,7 +41,9 @@ public class Character : MonoBehaviour {
 	}
 
     void Start() {
-		InvokeRepeating("drainHealth", 0, 2f);
+		Spew.playerScript = this;
+		Debug.Log(""+Spew.playerScript);
+		InvokeRepeating("drainHealth", 2, 2f);
 	} 
 	
 	// Update is called once per frame
