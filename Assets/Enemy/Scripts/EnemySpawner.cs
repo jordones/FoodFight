@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         // Run the Spawn method ever spawn time in 3 seconds every 3 seconds
+        Spawn();
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
