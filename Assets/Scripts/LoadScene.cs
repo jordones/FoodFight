@@ -11,7 +11,7 @@ public class LoadScene : MonoBehaviour
 		StartCoroutine(AsyncLoadScene(scene));
     }
 
-    IEnumerator AsyncLoadScene(string scene)
+    public static IEnumerator AsyncLoadScene(string scene)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
 
