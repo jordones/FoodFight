@@ -6,9 +6,6 @@ public class EnemyStats : MonoBehaviour {
 
     public int health = 100;
     public int attack = 25;
-    public GameObject me;
-
-    public GameObject enemyFab;
 
 	// Use this for initialization
 	void Start () {
@@ -39,13 +36,13 @@ public class EnemyStats : MonoBehaviour {
 
     private void Die () {
         Debug.Log("Enemy Death");
-        SpawnEnemy(new Vector3(1,1,0), SimpleMovement.BEHAVIOUR.AGGRO); 
+        LevelManager.instance.Killed();
         Destroy(gameObject);    
     }
 
-    private void SpawnEnemy(Vector3 spawnPos, SimpleMovement.BEHAVIOUR behaviour) {
-        GameObject newEnemy = Instantiate(enemyFab, spawnPos, Quaternion.Euler(new Vector3 (0,0,0))) as GameObject;
-        newEnemy.GetComponent<SimpleMovement>().behaviour = SimpleMovement.BEHAVIOUR.AGGRO;
-        newEnemy.GetComponent<EnemyStats>().health = 100;
+    void OnGUI() {
+        Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
     }
 }

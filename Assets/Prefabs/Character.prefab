@@ -207,13 +207,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  heathMinus: 10
   speed: 5
   spewSpeed: 20
   spewDamage: 20
   slapDamage: 50
   slapRange: 2
   possessRange: 6
-  me: {fileID: 1934354566699002}
   maxSpeed: 5
   jumpForce: 800
   slapping: 0
