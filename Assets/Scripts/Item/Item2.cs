@@ -13,7 +13,8 @@ public class Item2 : Item {
 	void Update () {
 		
 	}
-	public override void ModifyCharacter() {
+	
+	public override void OnPickup(Character character) {
 		character.slapDamage *= 2;
 		character.spewDamage *= 2;
 	}

@@ -14,7 +14,6 @@ public class Character : MonoBehaviour {
 	public float slapRange = 2f;
 	public float possessRange = 6f;
 	
-
     private float moveForce = 51f;
 	public float maxSpeed = 3f;
 	public float jumpForce = 5000f;
@@ -22,6 +21,8 @@ public class Character : MonoBehaviour {
 	public bool slapping = false;
 	public bool slapDebounce = false;
 	private bool grounded = true;
+
+	public List<Item> inventory = new List<Item>();
 
 	public Transform groundCheck;
 
@@ -31,7 +32,6 @@ public class Character : MonoBehaviour {
 	public GameObject possessFab;
 
 	private bool facingRight = true;
-
 
 	// Use this for initialization
 	void Awake () {
@@ -205,5 +205,12 @@ public class Character : MonoBehaviour {
 
 	void drainHealth() {
 		TakeDamage(heathMinus);
+	}
+
+	public void Pickup(GameObject itemObject) {
+		Item item = itemObject.GetComponent<Item>();
+		inventory.Add(item);
+		itemObject.transform.parent = gameObject.transform;
+		item.OnPickup(this);
 	}
 }
