@@ -13,7 +13,8 @@ public class Item3 : Item {
 	void Update () {
 		
 	}
-	public override void ModifyCharacter() {
+	
+	public override void OnPickup(Character character) {
 		character.health -= 27;
 	}
 }

@@ -13,7 +13,8 @@ public class Item1 : Item {
 		
 	}
 
-	public override void ModifyCharacter() {
+	public override void OnPickup(Character character) {
         character.maxSpeed += 3f;
-    }
+	}
+
 }
