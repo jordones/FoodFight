@@ -5,19 +5,49 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
+    private bool running = false;
+    public bool active = false;
     public float spawnTime = 3f;
     public GameObject[] enemyTypes;    // Number of each different enemy type  
     void Start()
     {
-        // Run the Spawn method ever spawn time in 3 seconds every 3 seconds
-        Spawn();
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (active) {
+            StartSpawner();
+        } else {
+            StopSpawner();
+        }
+    }
 
+    public void StartSpawner() {
+        // Run the Spawn method every 3 seconds starting now
+        if (!running) {
+            InvokeRepeating("Spawn", 0.0f, spawnTime);
+            running = true;
+        }
+    }
+
+    public void StopSpawner() {
+        CancelInvoke();
+        running = false;
+    }
+
+	void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Character entred spawner radius");
+		if (col.tag == "Character") {
+            StartSpawner();
+        }
+    }
+
+    void OnTriggerExit2(Collider2D col) {
+        Debug.Log("Character left spawner radius");
+		if (col.tag == "Character") {
+            StopSpawner();
+        }
     }
 
     void Spawn()
