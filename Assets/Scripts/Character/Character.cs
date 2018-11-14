@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour, OnLevelGoal {
 
 
 	public int health = 100;
@@ -42,6 +42,7 @@ public class Character : MonoBehaviour {
 
     void Start() {
 		Spew.playerScript = this;
+		LevelManager.instance.subscribeToGoal(this);
 		Debug.Log(""+Spew.playerScript);
 		InvokeRepeating("drainHealth", 2, 2f);
 	} 
@@ -212,5 +213,10 @@ public class Character : MonoBehaviour {
 		inventory.Add(item);
 		itemObject.transform.parent = gameObject.transform;
 		item.OnPickup(this);
+	}
+
+	public void OnLevelGoal() {
+		gameObject.transform.position = new Vector3 (120f, 0f, 0f);
+
 	}
 }

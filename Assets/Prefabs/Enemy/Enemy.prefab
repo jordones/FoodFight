@@ -100,10 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760fc9e31ea984b5fba3a21d9521bc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   health: 100
   attack: 25
-  me: {fileID: 1766535486232634}
-  enemyFab: {fileID: 1766535486232634}
 --- !u!114 &114941152083547276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 903851429
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b54b81a79580649329bd3f1e2c16eaba, type: 3}
   m_Color: {r: 0.6603774, g: 0.14017446, b: 0.14017446, a: 1}

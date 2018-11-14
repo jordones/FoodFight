@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1159180698838984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.535036, y: -1.4018624, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,10 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760fc9e31ea984b5fba3a21d9521bc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 3
   health: 100
   attack: 25
-  me: {fileID: 1159180698838984}
-  enemyFab: {fileID: 1159180698838984}
 --- !u!212 &212878404820313720
 SpriteRenderer:
   m_ObjectHideFlags: 1
