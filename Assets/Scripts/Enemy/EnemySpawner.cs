@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public bool active = true;
+    private bool running = false;
+    public bool active = false;
     public float spawnTime = 3f;
     public GameObject[] enemyTypes;    // Number of each different enemy type  
     void Start()
@@ -22,17 +23,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void StartSpawner() {
+    public void StartSpawner() {
         // Run the Spawn method every 3 seconds starting now
-        if (!active) {
+        if (!running) {
             InvokeRepeating("Spawn", 0.0f, spawnTime);
-            active = true;
+            running = true;
         }
     }
 
-    void StopSpawner() {
+    public void StopSpawner() {
         CancelInvoke();
-        active = false;
+        running = false;
     }
 
 	void OnTriggerEnter2D(Collider2D col) {
