@@ -30,12 +30,12 @@ public class Character : MonoBehaviour {
 	public Rigidbody2D spewFab; 
 	public GameObject slapFab; 
 	public GameObject possessFab;
-
+    public Animator animator;
 	private bool facingRight = true;
 
 	// Use this for initialization
 	void Awake () {
-		// anim = GetComponent<Animator>();
+		animator = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
 		groundCheck = transform.Find("groundCheck");
 	}
@@ -55,15 +55,27 @@ public class Character : MonoBehaviour {
 		// Jump, only if the character is on the ground
 		if (Input.GetButtonDown("Jump") && grounded) {
 			jump = true;
-		}
-		if (Input.GetButtonDown("Spew")) {
-			handleSpew();
+            animator.SetTrigger("Jump");
+
+
+        }
+        if (Input.GetButtonDown("Spew")) {
+            animator.SetTrigger("Spew");
+
+            handleSpew();
 		} else if (Input.GetButtonDown("Slap") && !slapping) {
-			handleSlap();		
-		} else if (Input.GetButtonDown("Possess")) {
+            animator.SetTrigger("Slap");
+            handleSlap();
+
+        }
+        else if (Input.GetButtonDown("Possess")) {
 			handlePossess();
-		}
-		handleSlapCollosion(); 
+        } else if (grounded) {
+            animator.ResetTrigger("Jump");
+        }
+ 
+
+        handleSlapCollosion(); 
     }
 
 	void handlePossess() {
@@ -163,7 +175,10 @@ public class Character : MonoBehaviour {
 
 	void Flip() {
 		facingRight = !facingRight;
-	}
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+    }
 
     public void TakeDamage (int amount) {
         health -= amount;
