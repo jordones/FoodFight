@@ -36,8 +36,9 @@ public class EnemyStats : MonoBehaviour {
 
     private void Die () {
         Debug.Log("Enemy Death");
-        LevelManager.instance.Killed();
         Destroy(gameObject);    
+        LevelManager.instance.Killed();
+        // print("Enemy destroyed");
     }
 
     void OnGUI() {
