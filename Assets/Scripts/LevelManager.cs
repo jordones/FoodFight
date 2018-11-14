@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
 	public static LevelManager instance = null;
 	private int killed {get; set;} = 0;
 	public int goal = 10;
+	public string next = "MainMenu";
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +34,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public IEnumerator EndLevel() {
-		yield return StartCoroutine(LoadScene.AsyncLoadScene("MainMenu"));
+		yield return StartCoroutine(LoadScene.AsyncLoadScene(next));
 	}
 
 	public void Killed() {
