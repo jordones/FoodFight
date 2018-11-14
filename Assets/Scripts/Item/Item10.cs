@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item3 : Item {
+public class Item10 : Item {
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class Item3 : Item {
 	void Update () {
 		
 	}
-	
+
 	public override void OnPickup(Character character) {
 		character.health += 45;
 	}
