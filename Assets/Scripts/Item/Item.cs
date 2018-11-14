@@ -11,10 +11,7 @@ public abstract class Item : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-
+	
 	void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collision on the item");
 		if (col.tag == "Character") {
