@@ -12,12 +12,16 @@ public class EnemyStats : TypedEnemy {
 		
 	}
 	
+	// Update is called once per frame
+	void Update () {
 
-    public void TakeDamage (int amount) {
-        health -= amount;
         if (health <= 0) {
             Die();
         }
+    }
+
+    public void TakeDamage (int amount) {
+        health -= amount;
         Debug.Log("Enemy damage from " + (health+amount) + " to " + health);
     }
 
@@ -32,8 +36,9 @@ public class EnemyStats : TypedEnemy {
 
     private void Die () {
         Debug.Log("Enemy Death");
-        LevelManager.instance.Killed(this);
         Destroy(gameObject);    
+        LevelManager.instance.Killed(this);
+        // print("Enemy destroyed");
     }
 
     void OnGUI() {

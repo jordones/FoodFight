@@ -6,7 +6,7 @@ public class Character : MonoBehaviour, OnLevelGoal {
 
 
 	public int health = 100;
-	public int heathMinus = 10;
+	public int healthMinus = 10;
 	public int speed = 5;
 	public float spewSpeed = 20f;
 	public int spewDamage = 20;
@@ -14,7 +14,7 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	public float slapRange = 2f;
 	public float possessRange = 6f;
 	
-    private float moveForce = 51f;
+    public float moveForce = 51f;
 	public float maxSpeed = 3f;
 	public float jumpForce = 5000f;
 	private bool jump = false;
@@ -205,7 +205,7 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	}
 
 	void drainHealth() {
-		TakeDamage(heathMinus);
+		TakeDamage(healthMinus);
 	}
 
 	public void Pickup(GameObject itemObject) {
