@@ -17,11 +17,13 @@ public abstract class Item : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collision on the item");
 		if (col.tag == "Character") {
-			GameObject parent = transform.parent.gameObject;
+			GetComponent<Collider2D>().enabled = false;
+			GameObject parent = gameObject.transform.parent.gameObject;
+			Debug.Log(parent);
 
 			Character character = col.gameObject.GetComponent<Character>();
 			character.Pickup(gameObject);
-			GetComponent<Collider2D>().enabled = false;
+			Debug.Log(parent);
 			Destroy(parent);
 		}
 	}

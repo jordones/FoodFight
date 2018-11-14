@@ -54,8 +54,7 @@ GameObject:
   - component: {fileID: 212553985971279030}
   - component: {fileID: 50910267586119062}
   - component: {fileID: 114658378730312358}
-  - component: {fileID: 61335511042805198}
-  - component: {fileID: 58300383501727300}
+  - component: {fileID: 70037148761933862}
   m_Layer: 11
   m_Name: Character
   m_TagString: Character
@@ -83,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934354566699002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.355, y: -2.78, z: 0}
+  m_LocalPosition: {x: -52.85, y: 4.85, z: 0}
   m_LocalScale: {x: 0.54516, y: 1.1302354, z: 1}
   m_Children:
   - {fileID: 4302345188609296}
@@ -164,8 +163,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58300383501727300
-CircleCollider2D:
+--- !u!70 &70037148761933862
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -176,34 +175,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25}
-  serializedVersion: 2
-  m_Radius: 0.25
---- !u!61 &61335511042805198
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934354566699002}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.15259889}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.6948022}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1.0000001}
+  m_Direction: 0
 --- !u!81 &81805368854380290
 AudioListener:
   m_ObjectHideFlags: 1
@@ -223,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  heathMinus: 10
+  heathMinus: 0
   speed: 5
   spewSpeed: 20
   spewDamage: 20
