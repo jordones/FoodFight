@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
+public class EnemyStats : TypedEnemy {
 
     public int health = 100;
     public int attack = 25;
@@ -12,16 +12,12 @@ public class EnemyStats : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-        if (health <= 0) {
-            Die();
-        }
-    }
 
     public void TakeDamage (int amount) {
         health -= amount;
+        if (health <= 0) {
+            Die();
+        }
         Debug.Log("Enemy damage from " + (health+amount) + " to " + health);
     }
 
@@ -36,7 +32,7 @@ public class EnemyStats : MonoBehaviour {
 
     private void Die () {
         Debug.Log("Enemy Death");
-        LevelManager.instance.Killed();
+        LevelManager.instance.Killed(this);
         Destroy(gameObject);    
     }
 
