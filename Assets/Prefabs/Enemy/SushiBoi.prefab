@@ -116,8 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attack: 25
-  me: {fileID: 1159180698838984}
-  enemyFab: {fileID: 1159180698838984}
 --- !u!212 &212878404820313720
 SpriteRenderer:
   m_ObjectHideFlags: 1
