@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, OnLevelGoal {
 
+    public int bossSpawnX = 0;
+    public int bossSpawnY = 0;
 
 	public int health = 100;
 	public int healthMinus = 10;
@@ -216,7 +218,6 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	}
 
 	public void OnLevelGoal() {
-		gameObject.transform.position = new Vector3 (120f, 0f, 0f);
-
+		gameObject.transform.position = new Vector3 (bossSpawnX,bossSpawnY, 0);
 	}
 }

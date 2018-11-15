@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour {
 
 	public static LevelManager instance = null;
 	private int killed {get; set;} = 0;
+	public string next = "MainMenu";
 	private int bossKilled {get; set;} = 0;
 	public int enemyGoal = 10;
 	public int bossGoal = 1;
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public IEnumerator EndLevel() {
-		yield return StartCoroutine(LoadScene.AsyncLoadScene("MainMenu"));
+		yield return StartCoroutine(LoadScene.AsyncLoadScene(next));
 	}
 
 	public void Killed(TypedEnemy obj) {

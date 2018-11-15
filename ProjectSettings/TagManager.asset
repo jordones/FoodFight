@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Character
   - Item
+  - Spawner
   layers:
   - Default
   - TransparentFX

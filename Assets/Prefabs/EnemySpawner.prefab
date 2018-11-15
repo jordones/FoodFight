@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4947192385265498}
   - component: {fileID: 114451247267755382}
-  m_Layer: 12
+  - component: {fileID: 58563730914661560}
+  m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58563730914661560
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942864986026698}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 3}
+  serializedVersion: 2
+  m_Radius: 10
 --- !u!114 &114451247267755382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d9efb405c094e088a12217fe3c6cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   spawnTime: 15
   enemyTypes:
   - {fileID: 1766535486232634, guid: 04deaac0464d34c19a2308027e97ee93, type: 2}
