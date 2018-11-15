@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
+public class EnemyStats : TypedEnemy {
 
     public int health = 100;
     public int attack = 25;
@@ -36,8 +36,9 @@ public class EnemyStats : MonoBehaviour {
 
     private void Die () {
         Debug.Log("Enemy Death");
-        LevelManager.instance.Killed();
         Destroy(gameObject);    
+        LevelManager.instance.Killed(this);
+        // print("Enemy destroyed");
     }
 
     void OnGUI() {

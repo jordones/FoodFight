@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour, OnLevelGoal {
 
+    public int bossSpawnX = 0;
+    public int bossSpawnY = 0;
 
 	public int health = 100;
-	public int heathMinus = 10;
+	public int healthMinus = 10;
 	public int speed = 5;
 	public float spewSpeed = 20f;
 	public int spewDamage = 20;
@@ -14,7 +16,7 @@ public class Character : MonoBehaviour {
 	public float slapRange = 2f;
 	public float possessRange = 6f;
 	
-    private float moveForce = 51f;
+    public float moveForce = 51f;
 	public float maxSpeed = 3f;
 	public float jumpForce = 5000f;
 	private bool jump = false;
@@ -42,6 +44,7 @@ public class Character : MonoBehaviour {
 
     void Start() {
 		Spew.playerScript = this;
+		LevelManager.instance.subscribeToGoal(this);
 		Debug.Log(""+Spew.playerScript);
 		InvokeRepeating("drainHealth", 2, 2f);
 	} 
@@ -204,7 +207,7 @@ public class Character : MonoBehaviour {
 	}
 
 	void drainHealth() {
-		TakeDamage(heathMinus);
+		TakeDamage(healthMinus);
 	}
 
 	public void Pickup(GameObject itemObject) {
@@ -212,5 +215,9 @@ public class Character : MonoBehaviour {
 		inventory.Add(item);
 		itemObject.transform.parent = gameObject.transform;
 		item.OnPickup(this);
+	}
+
+	public void OnLevelGoal() {
+		gameObject.transform.position = new Vector3 (bossSpawnX,bossSpawnY, 0);
 	}
 }

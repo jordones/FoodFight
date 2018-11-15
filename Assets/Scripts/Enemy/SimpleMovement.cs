@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SimpleMovement : MonoBehaviour {
 
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 2.8f;
+    public float moveForce = 50f;
     public int fieldOfVision = 10;
     public BEHAVIOUR behaviour;
     private MOVE_DIRECTION moveDirection = MOVE_DIRECTION.NONE;
@@ -53,24 +54,30 @@ public class SimpleMovement : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-		
+		int dir = 0;
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-
                     break;
             
             case MOVE_DIRECTION.LEFT:
-                GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * movementSpeed * -1, GetComponent<Rigidbody2D>().velocity.y);
-
+                dir = -1;
                 break;
             
             case MOVE_DIRECTION.RIGHT:
-                GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
+                dir = 1;
                 break;
-            
-
         }
+
+        Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+        if (dir * rb2d.velocity.x < movementSpeed) {
+            rb2d.AddForce(Vector2.right * dir * moveForce);
+        }
+
+        // if character speed is above max character speed, set speed to max speed
+        if (Mathf.Abs(rb2d.velocity.x) > movementSpeed) {
+            // Mathf.Sign gets sign of number (1 or -1)
+            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * movementSpeed, rb2d.velocity.y);
+        }   	
 	}
 
     // Enumeration denoting the direction in which the enemy should be fleeing
