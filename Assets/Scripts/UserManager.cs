@@ -22,7 +22,7 @@ public class UserManager : MonoBehaviour {
 
     public int deaths {get; set;} = 0;
     public int runs {get; set;} = 0;
-    public List<int> items {get; set;} = new List<int>(){0};
+    public List<int> items {get; set;} = new List<int>(){0, 1, 2, 3, 4, 5};
 
     // Handle initialization of the necessary firebase modules:
     public void InitializeFirebase() {

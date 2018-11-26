@@ -42,6 +42,7 @@ public class ItemPicker : MonoBehaviour
                 }
             }
         }
+        Destroy(gameObject);
     }
 
     private IEnumerator Spawn(Transform itemStand)
