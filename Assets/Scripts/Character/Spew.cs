@@ -15,11 +15,6 @@ public class Spew : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		Debug.Log("SPEW HIT");
-		Debug.Log(col.gameObject);
-		Debug.Log(col.tag);
-
-
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
 			col.gameObject.GetComponent<EnemyStats>().TakeDamage(playerScript.spewDamage);

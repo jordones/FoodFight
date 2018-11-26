@@ -37,7 +37,9 @@ public class ItemPicker : MonoBehaviour
         {
             if (!item.pickedUp)
             {
-                Destroy(item.transform.parent.gameObject);
+                if (item != null) {
+                    Destroy(item.transform.parent.gameObject);
+                }
             }
         }
         Destroy(gameObject);
