@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, OnLevelGoal {
 
+	public static Character instance = null;
+
+
     public int bossSpawnX = 0;
     public int bossSpawnY = 0;
 
@@ -38,8 +41,14 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	// Use this for initialization
 	void Awake () {
 		// anim = GetComponent<Animator>();
-		rb2d = GetComponent<Rigidbody2D>();
-		groundCheck = transform.Find("groundCheck");
+		if (instance == null) {
+            instance = this;
+			rb2d = GetComponent<Rigidbody2D>();
+			groundCheck = transform.Find("groundCheck");
+			DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+        }
 	}
 
     void Start() {

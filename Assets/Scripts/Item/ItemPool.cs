@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.IO;
+
 using UnityEngine;
 using UnityEditor;
+
 
 public class ItemPool: MonoBehaviour {
     public bool ready;
@@ -13,6 +17,7 @@ public class ItemPool: MonoBehaviour {
         // Singleton instance; ensures that only one ItemPool can exist at a time
         if (instance == null) {
             instance = this;
+            DontDestroyOnLoad(gameObject);
             StartCoroutine(InitPool());
         } else {
             Destroy(gameObject);
@@ -21,15 +26,14 @@ public class ItemPool: MonoBehaviour {
 
     IEnumerator InitPool()
     {
-        Debug.Log("Waiting...");
         yield return new WaitUntil(() => UserManager.instance != null && UserManager.instance.ready); //Wait until UserManager is initialized
-        Debug.Log("Moving on...");
         pool = UserManager.instance.items;
         ready = true;
 
     }
 
     public GameObject GetRandomItem() {
-        return items[pool[Random.Range(0, pool.Count)]];
+        int selected = UnityEngine.Random.Range(0, pool.Count);
+        return items[pool[selected]];
     }
 }
