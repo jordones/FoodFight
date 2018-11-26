@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class DisplayItems : MonoBehaviour
 {
 
-    private Character character;
     private int numItems = 0;
 
     // Use this for initialization
     void Start()
     {
-        character = GameObject.FindGameObjectWithTag("Character").GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -32,6 +30,7 @@ public class DisplayItems : MonoBehaviour
         // Move the image to an open space        
         RectTransform rt = newItem.GetComponent<RectTransform>() as RectTransform;
         rt.localPosition = itemPosition;
+		// These numbers for relative to the items RectTransform in the ui prefab
         rt.localScale = new Vector2(6, 0.07f);
         numItems++;
     }

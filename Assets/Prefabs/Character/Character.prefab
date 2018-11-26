@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934354566699002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.25, y: 4.74, z: 0}
+  m_LocalPosition: {x: -35.07, y: -2.82, z: 0}
   m_LocalScale: {x: 0.54516, y: 1.1302354, z: 1}
   m_Children:
   - {fileID: 4302345188609296}
@@ -196,11 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5584a9c8e8634caae65a1bb2bbd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossSpawnX: 200
-  bossSpawnY: 0
   maxHealth: 100
-  health: 10000
-  healthMinus: 10
+  health: 100
+  healthMinus: 5
   speed: 5
   spewSpeed: 20
   spewDamage: 20
@@ -212,7 +210,6 @@ MonoBehaviour:
   jumpForce: 800
   slapping: 0
   slapDebounce: 0
-  itemsUI: {fileID: 0}
   inventory: []
   groundCheck: {fileID: 0}
   spewFab: {fileID: 50646885619520188, guid: db742c2a8f319ba4197e0b2d0a08a838, type: 2}

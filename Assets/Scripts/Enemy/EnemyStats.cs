@@ -46,8 +46,8 @@ public class EnemyStats : TypedEnemy {
     }
 
     void OnGUI() {
-        Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        // Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
-		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
+		// GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
     }
 }
