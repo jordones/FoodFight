@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 50769444298546358}
   - component: {fileID: 70222215658450696}
   m_Layer: 12
-  m_Name: Eggplant
+  m_Name: Knife
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1480539625361638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.81, y: -1.35, z: -0.2109375}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -47.397224, y: 5.885738, z: -0.2109375}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,8 +93,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.016486645, y: -0.00000023841858}
-  m_Size: {x: 0.9954958, y: 1.5780183}
+  m_Offset: {x: -0.011091232, y: 0.0053949356}
+  m_Size: {x: 0.22940445, y: 1.5888085}
   m_Direction: 0
 --- !u!95 &95785509598445824
 Animator:
@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06848c97749c1a44bb61bab72a2ef73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  health: 250
+  attack: 45
 --- !u!212 &212728870308190522
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -173,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5663f020aea0f49428eca1fbc6931982, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcd7685b55ff47842a88c7f6fbf73581, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
