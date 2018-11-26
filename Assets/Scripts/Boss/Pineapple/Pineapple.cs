@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss7 : TypedEnemy {
+public class Pineapple : TypedEnemy {
 
 	public int damage = 10;
 	public int health = 100;
@@ -22,19 +22,29 @@ public class Boss7 : TypedEnemy {
 	// The bossess X coordinate on spawn 
 	private float initialX;
 
-	private Boss7State currentState;
+	private PineappleState currentState;
 	// wheather or not an enemy will spawn next time the boss appears
 	private bool spawnEnemy = false;
 	// Whether or not the mainTarget is in the bossess battleRange
 	private bool targetInRange;
 
-
+	public GameObject hiddenPlatformFab;
+	private Vector3 hiddenPos;
+	private int platformDeltaY = 100;
+	private bool facingRight = false;
 
 
 	// Use this for initialization
 	void Start () {
 		initialX = gameObject.transform.position.x;
+		Vector3 platPos = new Vector3(initialX, gameObject.transform.position.y-platformDeltaY,0);
+		GameObject hiddenPlatform = Instantiate(hiddenPlatformFab, platPos, Quaternion.Euler(new Vector3 (0,0,0))) as GameObject;
+		hiddenPos = new Vector3 (initialX,hiddenPlatform.transform.position.y+1, 0);
+		
+		gameObject.transform.position = hiddenPos;
 		StartCoroutine("BattlePlayer", 0.0f);
+		IgnoreGroundCollisions();
+		
 	}
 	
 	// Update is called once per frame
@@ -52,14 +62,14 @@ public class Boss7 : TypedEnemy {
 		                || initialX - battleRange >= mainTarget.gameObject.transform.position.x;
 
 			if (!targetInRange) {
-				currentState = Boss7State.HIDING;
+				currentState = PineappleState.HIDING;
 			}
 			
 
 			switch(currentState) {
-				case Boss7State.HIDDEN:
+				case PineappleState.HIDDEN:
 					// Choose Behaviour
-					spawnEnemy = 1 == Random.Range(0,1) ? true : false;
+					spawnEnemy = 1 == Random.Range(0,2) ? true : false;
 					
 					// If the boss chose to spawn an enemy when it appears
 					if (spawnEnemy) {
@@ -67,33 +77,42 @@ public class Boss7 : TypedEnemy {
 					} else {
 						appearX = mainTarget.transform.position.x;
 					}
-					currentState = Boss7State.APPEARING;
+					currentState = PineappleState.APPEARING;
 					// show indicator to where boss will come up?, then wait
 					yield return new WaitForSeconds(1.5f);
 
 				break;
-				case Boss7State.APPEARING:
+				case PineappleState.APPEARING:
 					// Tell the boss to move upwards, then wait
+					IgnoreGroundCollisions();
 					yield return new WaitForSeconds(1.5f);
-					currentState = Boss7State.APPEARED;
+					AllowGroundCollisions();
+					currentState = PineappleState.APPEARED;
 				break;
-				case Boss7State.APPEARED:
-					currentState = spawnEnemy ? Boss7State.SPAWNING_ENEMY : Boss7State.HIDING;
+				case PineappleState.APPEARED:
+					currentState = spawnEnemy ? PineappleState.SPAWNING_ENEMY : PineappleState.HIDING;
 					spawnEnemy = false;
 					yield return new WaitForSeconds(1.5f);
 					
 				break;
-				case Boss7State.SPAWNING_ENEMY:
+				case PineappleState.SPAWNING_ENEMY:
 					// do stuff to spawn an emeny
 					// change state
-					yield return new WaitForSeconds(1.5f);
+					int numSpawn = Random.Range(0,maxEnemiesToSpawn+1);
+					for (int i = 0; i < numSpawn; i++) {
+
+					    
+					   yield return new WaitForSeconds(1.5f);
+					}
 
 				break;
 
-				case Boss7State.HIDING:
+				case PineappleState.HIDING:
 					// Tell the boss to hide, reposition the boss to it's
+					IgnoreGroundCollisions();
 					yield return new WaitForSeconds(1.5f);
-					currentState = Boss7State.HIDDEN;
+					AllowGroundCollisions();
+					currentState = PineappleState.HIDDEN;
 
 				break;
 			}
@@ -108,9 +127,15 @@ public class Boss7 : TypedEnemy {
 		int sign = 1 == Random.Range(0,1) ? -1 : 1;
 		return mainTarget.transform.position.x + appearRange*sign;
 	}
+	private void IgnoreGroundCollisions() {
+        Physics2D.IgnoreLayerCollision(12,10, true);
+	}
+	private void AllowGroundCollisions() {
+        Physics2D.IgnoreLayerCollision(12,10,false);
+	}
 }
 
-enum Boss7State {
+enum PineappleState {
 	HIDDEN,
 	APPEARED,
 	HIDING,
