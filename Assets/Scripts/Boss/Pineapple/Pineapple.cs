@@ -96,15 +96,12 @@ public class Pineapple : TypedEnemy {
 					
 				break;
 				case PineappleState.SPAWNING_ENEMY:
-					// do stuff to spawn an emeny
-					// change state
 					int numSpawn = Random.Range(0,maxEnemiesToSpawn+1);
 					for (int i = 0; i < numSpawn; i++) {
-
-					    
+						// Instansitate an enemy
 					   yield return new WaitForSeconds(1.5f);
 					}
-
+					currentState = PineappleState.HIDING;
 				break;
 
 				case PineappleState.HIDING:
