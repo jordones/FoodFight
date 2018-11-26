@@ -44,7 +44,9 @@ public class Character : MonoBehaviour, OnLevelGoal {
 
     void Start() {
 		Spew.playerScript = this;
-		LevelManager.instance.subscribeToGoal(this);
+		if (LevelManager.instance) {
+		    LevelManager.instance.subscribeToGoal(this);
+		}
 		Debug.Log(""+Spew.playerScript);
 		InvokeRepeating("drainHealth", 2, 2f);
 	} 
