@@ -144,14 +144,14 @@ public class UserManager : MonoBehaviour {
 	}
 
     void OnGUI() {
-        if (user != null) {
-            GUI.Label(new Rect(10, 10, 200, 30), user.UserId);
-        } else {
-            GUI.Label(new Rect(10, 10, 100, 30), "Logged in: None");
-        }
-        GUI.Label(new Rect(10, 50, 200, 30), "Deaths: " + deaths);
-        GUI.Label(new Rect(10, 100, 200, 30), "Runs: " + runs);
-        GUI.Label(new Rect(10, 150, 200, 30), "Items: [" + String.Join(", ", items) + "]");
+        // if (user != null) {
+        //     GUI.Label(new Rect(10, 10, 200, 30), user.UserId);
+        // } else {
+        //     GUI.Label(new Rect(10, 10, 100, 30), "Logged in: None");
+        // }
+        // GUI.Label(new Rect(10, 50, 200, 30), "Deaths: " + deaths);
+        // GUI.Label(new Rect(10, 100, 200, 30), "Runs: " + runs);
+        // GUI.Label(new Rect(10, 150, 200, 30), "Items: [" + String.Join(", ", items) + "]");
     }
 
 	void Update () {

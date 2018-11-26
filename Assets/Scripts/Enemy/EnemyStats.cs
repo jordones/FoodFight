@@ -25,9 +25,6 @@ public class EnemyStats : TypedEnemy {
     public void TakeDamage (int amount) {
         health -= amount;
         float healthPercent = (float)health/maxHealth;
-        Debug.Log("current HP: " + health);
-        Debug.Log("maxHealth: " + maxHealth);
-        Debug.Log("healthpercnt: " + healthPercent);
         healthBar.SetSize(healthPercent);
         Debug.Log("Enemy damage from " + (health+amount) + " to " + health);
     }

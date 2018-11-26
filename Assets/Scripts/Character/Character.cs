@@ -10,6 +10,7 @@ public class Character : MonoBehaviour, OnLevelGoal {
     public int bossSpawnX = 0;
     public int bossSpawnY = 0;
 
+	public int maxHealth = 100;
 	public int health = 100;
 	public int healthMinus = 10;
 	public int speed = 5;
@@ -26,6 +27,8 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	public bool slapping = false;
 	public bool slapDebounce = false;
 	private bool grounded = true;
+
+	private DisplayItems itemsUI;
 
 	public List<Item> inventory = new List<Item>();
 
@@ -56,6 +59,8 @@ public class Character : MonoBehaviour, OnLevelGoal {
 		LevelManager.instance.subscribeToGoal(this);
 		Debug.Log(""+Spew.playerScript);
 		InvokeRepeating("drainHealth", 2, 2f);
+        itemsUI = GameObject.FindGameObjectWithTag("UI Item").GetComponent<DisplayItems>();
+
 	} 
 	
 	// Update is called once per frame
@@ -205,22 +210,24 @@ public class Character : MonoBehaviour, OnLevelGoal {
 		return health;
 	}
 
-	void OnGUI () {
-		Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+	// void OnGUI () {
+	// 	Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
-		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
-		// GUI.Label(new Rect (Screen.width - 150,50,100,50), "HP: " + health);
-		GUI.Label(new Rect (Screen.width - 150,50,100,50), "Slap Damage: " + slapDamage);
-		GUI.Label(new Rect (Screen.width - 150,100,100,50), "Spew Damage: " + spewDamage);
-		GUI.Label(new Rect (Screen.width - 150,150,100,50), "Speed: " + maxSpeed);
-	}
+	// 	GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
+	// 	// GUI.Label(new Rect (Screen.width - 150,50,100,50), "HP: " + health);
+	// 	GUI.Label(new Rect (Screen.width - 150,50,100,50), "Slap Damage: " + slapDamage);
+	// 	GUI.Label(new Rect (Screen.width - 150,100,100,50), "Spew Damage: " + spewDamage);
+	// 	GUI.Label(new Rect (Screen.width - 150,150,100,50), "Speed: " + maxSpeed);
+	// }
 
 	void drainHealth() {
+		Debug.Log("DRAINED");
 		TakeDamage(healthMinus);
 	}
 
 	public void Pickup(GameObject itemObject) {
 		Item item = itemObject.GetComponent<Item>();
+		itemsUI.AddItemToDisplay(item); // This needs to because because the parent of the item changes.
 		inventory.Add(item);
 		itemObject.transform.parent = gameObject.transform;
 		item.OnPickup(this);
