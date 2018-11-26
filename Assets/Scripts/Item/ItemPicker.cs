@@ -24,7 +24,6 @@ public class ItemPicker : MonoBehaviour
         // print(items.Count);
         foreach (Item item in items)
         {
-            print("ItemPicker: " + item.pickedUp);
             if (item.pickedUp)
             {
                 destoryAllItems();
@@ -38,7 +37,9 @@ public class ItemPicker : MonoBehaviour
         {
             if (!item.pickedUp)
             {
-                Destroy(item.transform.parent.gameObject);
+                if (item != null) {
+                    Destroy(item.transform.parent.gameObject);
+                }
             }
         }
     }
