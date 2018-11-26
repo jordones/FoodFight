@@ -24,7 +24,6 @@ public class ItemPicker : MonoBehaviour
         // print(items.Count);
         foreach (Item item in items)
         {
-            print("ItemPicker: " + item.pickedUp);
             if (item.pickedUp)
             {
                 destoryAllItems();
@@ -41,6 +40,7 @@ public class ItemPicker : MonoBehaviour
                 Destroy(item.transform.parent.gameObject);
             }
         }
+        Destroy(gameObject);
     }
 
     private IEnumerator Spawn(Transform itemStand)

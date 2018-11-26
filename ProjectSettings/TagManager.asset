@@ -9,6 +9,8 @@ TagManager:
   - Character
   - Item
   - Spawner
+  - SpawnPoint
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - Player
   - Enemies
   - Possessable
-  - 
+  - Wall
   - 
   - 
   - 

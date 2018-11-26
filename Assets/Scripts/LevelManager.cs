@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
 	public static LevelManager instance = null;
+	public GameObject spawnPoint = null;
 	private int killed {get; set;} = 0;
 	public string next = "MainMenu";
 	private int bossKilled {get; set;} = 0;
@@ -26,6 +27,11 @@ public class LevelManager : MonoBehaviour {
 	void Awake () {
         if (instance == null) {
             instance = this;
+
+			GameObject character = GameObject.FindWithTag("Character");
+
+			Debug.Log("Moving " + character + " to " + spawnPoint);
+			character.transform.position = spawnPoint.transform.position;
         } else {
             Destroy(gameObject);
         }

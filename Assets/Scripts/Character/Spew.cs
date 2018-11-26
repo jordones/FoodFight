@@ -17,13 +17,16 @@ public class Spew : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		Debug.Log("SPEW HIT");
 		Debug.Log(col.gameObject);
+		Debug.Log(col.tag);
+
 
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
 			col.gameObject.GetComponent<EnemyStats>().TakeDamage(playerScript.spewDamage);
 			Debug.Log("Enemy Hit");
 		    Destroy(gameObject);
-		} else if (col.tag != "Character" && col.tag != "Spawner") {
+		} else if (col.tag == "Terrain") {
+			Debug.Log("Terrain Hit");
 		    Destroy(gameObject);
 		}
 
