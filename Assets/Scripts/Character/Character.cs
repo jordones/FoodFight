@@ -229,7 +229,7 @@ public class Character : MonoBehaviour, OnLevelGoal
     private void Die()
     {
         Debug.Log("Character Death");
-        StartCoroutine(LoadScene.AsyncLoadScene("MainMenu"));
+        StartCoroutine(LoadScene.AsyncLoadScene("Death"));
         Destroy(gameObject);
     }
 
