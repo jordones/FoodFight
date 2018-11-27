@@ -8,8 +8,10 @@ public class EnemyStats : TypedEnemy
     public int maxHealth = 100;
     public int health = 100;
     public int attack = 25;
+    public EnemyAnimationHelper animationHelper;
 
     [SerializeField] private HealthBar healthBar;
+
 
     // Use this for initialization
     void Start()
@@ -22,6 +24,7 @@ public class EnemyStats : TypedEnemy
     {
         if (health <= 0)
         {
+            animationHelper.TriggerDie();
             Die();
         }
     }
@@ -41,6 +44,9 @@ public class EnemyStats : TypedEnemy
 
         if (collider.tag == "Character")
         {
+            Debug.Log(animationHelper);
+            Debug.Log("Attacking");
+            animationHelper.TriggerAttack();
             collider.gameObject.GetComponent<Character>().TakeDamage(attack);
         }
     }
@@ -48,7 +54,7 @@ public class EnemyStats : TypedEnemy
     private void Die()
     {
         Debug.Log("Enemy Death");
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
         LevelManager.instance.Killed(this);
         // print("Enemy destroyed");
     }

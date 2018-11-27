@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114652098630368844}
   - component: {fileID: 114826628277914018}
   - component: {fileID: 95123636583837874}
+  - component: {fileID: 114957767418731834}
   m_Layer: 12
   m_Name: Enemy2
   m_TagString: Enemy
@@ -338,6 +339,7 @@ MonoBehaviour:
   moveForce: 50
   fieldOfVision: 10
   behaviour: 1
+  animationHelper: {fileID: 114957767418731834}
 --- !u!114 &114826628277914018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,7 +355,19 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   attack: 25
+  animationHelper: {fileID: 114957767418731834}
   healthBar: {fileID: 114306039626485616}
+--- !u!114 &114957767418731834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056145092021334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcec96d743abd416d94714dfd4090868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212053755603215486
 SpriteRenderer:
   m_ObjectHideFlags: 1
