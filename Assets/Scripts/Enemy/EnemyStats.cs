@@ -2,62 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
+public class EnemyStats : TypedEnemy
+{
 
+    public int maxHealth = 100;
     public int health = 100;
     public int attack = 25;
-    private bool alive = true;
-    public Animator animator;
 
-    void Awake()
-    {
-        animator = GetComponent<Animator>();
+    [SerializeField] private HealthBar healthBar;
 
-    }
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        healthBar.SetSize(1f);
+    }
 
-        if (health <= 0) {
+    // Update is called once per frame
+    void Update()
+    {
+        if (health <= 0)
+        {
             Die();
-
         }
     }
 
-    public void TakeDamage (int amount) {
+    public void TakeDamage(int amount)
+    {
         health -= amount;
-        Debug.Log("Enemy damage from " + (health+amount) + " to " + health);
+        float healthPercent = (float)health / maxHealth;
+        healthBar.SetSize(healthPercent);
+        Debug.Log("Enemy damage from " + (health + amount) + " to " + health);
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
 
         Collider2D collider = collision.collider;
 
-        if (collider.tag == "Character") {
-            animator.SetTrigger("Attack");
+        if (collider.tag == "Character")
+        {
             collider.gameObject.GetComponent<Character>().TakeDamage(attack);
         }
-
     }
 
-    private void Die () {
-        if (alive)
-        {
-            animator.SetTrigger("Die");
-            Debug.Log("Enemy Death");
-            LevelManager.instance.Killed();
-            Destroy(gameObject, 0.417f);
-        }
-        alive = false;
+    private void Die()
+    {
+        Debug.Log("Enemy Death");
+        Destroy(gameObject);
+        LevelManager.instance.Killed(this);
+        // print("Enemy destroyed");
     }
 
-    void OnGUI() {
-        Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+    void OnGUI()
+    {
+        // Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
-		GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
+        // GUI.Label(new Rect (pos.x, Screen.height-pos.y-70, 30, 30), "" + health);
     }
 }
