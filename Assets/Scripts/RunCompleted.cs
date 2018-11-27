@@ -7,12 +7,22 @@ public class RunCompleted : MonoBehaviour
 {
     // Use this for initialization
     public List<Image> unlockedItemWrapper;
+    public static RunCompleted instance = null;
 
-    public void UpdateUnlockedItems(List<Item> items)
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+            RunManager.instance.RunComplete();
+        } else {
+            Destroy(gameObject);
+        }
+    }
+
+    public void UpdateUnlockedItems(List<Sprite> items)
     {
         for (int i = 0; i < items.Count; i++)
         {
-            unlockedItemWrapper[i].sprite = items[i].transform.parent.GetComponent<SpriteRenderer>().sprite;
+            unlockedItemWrapper[i].sprite = items[i];
         } 
     }
 
