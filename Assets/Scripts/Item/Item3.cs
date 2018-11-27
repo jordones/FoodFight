@@ -16,6 +16,5 @@ public class Item3 : Item {
 	
 	public override void OnPickup(Character character) {
 		character.health += 45;
-		character.maxHealth += 45;
 	}
 }

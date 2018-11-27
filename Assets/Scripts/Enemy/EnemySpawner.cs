@@ -37,18 +37,16 @@ public class EnemySpawner : MonoBehaviour
     }
 
 	void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Character entred spawner radius");
 		if (col.tag == "Character") {
-            Debug.Log("Character entred spawner radius");
-            //StartSpawner();
-            active = true;
+            StartSpawner();
         }
     }
 
-    void OnTriggerExit2D(Collider2D col) {
+    void OnTriggerExit2(Collider2D col) {
+        Debug.Log("Character left spawner radius");
 		if (col.tag == "Character") {
-            Debug.Log("Character left spawner radius");
-            //StopSpawner();
-            active = false;
+            StopSpawner();
         }
     }
 
