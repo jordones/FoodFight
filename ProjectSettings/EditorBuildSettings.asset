@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2dff846c8446d4d43b395c006d433829
-  - enabled: 0
-    path: Assets/Scenes/Devland.unity
-    guid: c8ada576b7dc6430b98761bdabfe0955
   - enabled: 1
     path: Assets/Scenes/Level_One.unity
     guid: dce57922618b642c38f5b4a7e9afb240
@@ -20,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_Three.unity
     guid: ba09ada232026424fa147041e2f4f694
+  - enabled: 1
+    path: Assets/Scenes/Level_Four.unity
+    guid: 4e35234b4be5af041ab6d5b012bb1a11
+  - enabled: 1
+    path: Assets/Scenes/Level_Five.unity
+    guid: 35151b4f93981dd4a8b9e0fe8e3ea3c6
   - enabled: 1
     path: Assets/Scenes/Death.unity
     guid: cc597ebc86405284f98a5a5220823189
