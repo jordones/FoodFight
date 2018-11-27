@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
 	public static LevelManager instance = null;
+	public GameObject spawnPoint = null;
 	private int killed {get; set;} = 0;
 	public string next = "MainMenu";
 	private int bossKilled {get; set;} = 0;
@@ -26,14 +27,19 @@ public class LevelManager : MonoBehaviour {
 	void Awake () {
         if (instance == null) {
             instance = this;
+
+			GameObject character = GameObject.FindWithTag("Character");
+
+			Debug.Log("Moving " + character + " to " + spawnPoint);
+			character.transform.position = spawnPoint.transform.position;
         } else {
             Destroy(gameObject);
         }
 	}
 
 	void OnGUI () {
-		GUI.Label(new Rect (Screen.width - 150,0,100,50), "Kills: " + killed + "/" + enemyGoal);
-		GUI.Label(new Rect (Screen.width - 150,20,100,50), "Bosses Killed: " + bossKilled + "/" + bossGoal);
+		GUI.Label(new Rect (50,50,100,50), "Kills: " + killed + "/" + enemyGoal);
+		GUI.Label(new Rect (50,70,100,50), "Bosses Killed: " + bossKilled + "/" + bossGoal);
 	}
 
 	public IEnumerator EndLevel() {
