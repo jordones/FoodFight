@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50634035379714440}
   - component: {fileID: 114941152083547276}
   - component: {fileID: 114654318679254706}
+  - component: {fileID: 95790694432195286}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -63,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61226999660318710
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -80,7 +81,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -89,6 +90,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95790694432195286
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766535486232634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 81a6574620475424587cdeccb6d11545, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114654318679254706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,8 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attack: 25
-  me: {fileID: 1766535486232634}
-  enemyFab: {fileID: 1766535486232634}
+  animator: {fileID: 0}
 --- !u!114 &114941152083547276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +136,7 @@ MonoBehaviour:
   movementSpeed: 5
   fieldOfVision: 10
   behaviour: 0
+  animator: {fileID: 0}
 --- !u!212 &212740542517619152
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -151,11 +170,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 903851429
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b54b81a79580649329bd3f1e2c16eaba, type: 3}
-  m_Color: {r: 0.6603774, g: 0.14017446, b: 0.14017446, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 21300000, guid: 47886306c50eb4602aa85b393e5bd4f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}

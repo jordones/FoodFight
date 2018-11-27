@@ -8,11 +8,15 @@ public class SimpleMovement : MonoBehaviour {
     public int fieldOfVision = 10;
     public BEHAVIOUR behaviour;
     private MOVE_DIRECTION moveDirection = MOVE_DIRECTION.NONE;
+    public Animator animator;
 
-	// Use this for initialization
-	void Awake () {
-		
-	}
+    private bool facingRight = true;
+
+    // Use this for initialization
+    void Awake () {
+        animator = GetComponent<Animator>();
+
+    }
 
     void Update () {
 
@@ -56,22 +60,32 @@ public class SimpleMovement : MonoBehaviour {
 		
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-
-                    break;
+                animator.ResetTrigger("Walk");
+                break;
             
             case MOVE_DIRECTION.LEFT:
                 GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * movementSpeed * -1, GetComponent<Rigidbody2D>().velocity.y);
-
+                animator.SetTrigger("Walk");
+                if (facingRight) Flip();
                 break;
             
             case MOVE_DIRECTION.RIGHT:
                 GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
+                animator.SetTrigger("Walk");
+                if (!facingRight) Flip();
                 break;
             
 
         }
-	}
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+    }
 
     // Enumeration denoting the direction in which the enemy should be fleeing
     private enum MOVE_DIRECTION

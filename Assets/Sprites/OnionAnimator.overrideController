@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: OnionAnimator
+  m_Controller: {fileID: 9100000, guid: fbaf7fe0f6cbf4031bdea246c00373c6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5dba68b1e7f3a47018292267feab53b2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ae66c8175e6254964b07c60f82c3a0f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5b2560eda3f764af89e2069d43377771, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52e2b9c036f1e4d6d94f0db7337e6f81, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 22b420f6cd4754d73be830444e81dc5e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3a04188739ed44fb182bda6451d264a2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5150c7314881146e9803efb11adf6aaa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9f4322f92de3b4dfeb4bbb9643a132a5, type: 2}

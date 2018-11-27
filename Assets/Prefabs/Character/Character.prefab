@@ -11,21 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1934354566699002}
   m_IsPrefabAsset: 1
---- !u!1 &1326678214872154
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4860640140978896}
-  m_Layer: 11
-  m_Name: groundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1355486930200128
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,8 +39,7 @@ GameObject:
   - component: {fileID: 212553985971279030}
   - component: {fileID: 50910267586119062}
   - component: {fileID: 114658378730312358}
-  - component: {fileID: 61335511042805198}
-  - component: {fileID: 95163402747339524}
+  - component: {fileID: 70037148761933862}
   m_Layer: 11
   m_Name: Character
   m_TagString: Character
@@ -83,26 +67,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934354566699002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 5, z: 0}
+  m_LocalPosition: {x: 102.1, y: 5.2, z: 0}
   m_LocalScale: {x: 0.54516, y: 1.1302354, z: 1}
   m_Children:
   - {fileID: 4302345188609296}
-  - {fileID: 4860640140978896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4860640140978896
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1326678214872154}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4849209204095566}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20442813769740308
 Camera:
@@ -128,7 +98,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -162,10 +132,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61335511042805198
-BoxCollider2D:
+--- !u!70 &70037148761933862
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -177,18 +147,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1, y: 1.0000001}
+  m_Direction: 0
 --- !u!81 &81805368854380290
 AudioListener:
   m_ObjectHideFlags: 1
@@ -196,24 +156,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355486930200128}
   m_Enabled: 1
---- !u!95 &95163402747339524
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934354566699002}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 83dd48f02b9524c31b5befc9a1874a5c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114658378730312358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,20 +167,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5584a9c8e8634caae65a1bb2bbd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   health: 100
-  heathMinus: 10
+  healthMinus: 5
   speed: 5
   spewSpeed: 20
   spewDamage: 20
   slapDamage: 50
   slapRange: 2
   possessRange: 6
+  moveForce: 51
   maxSpeed: 5
   jumpForce: 800
   slapping: 0
   slapDebounce: 0
   inventory: []
-  groundCheck: {fileID: 0}
   spewFab: {fileID: 50646885619520188, guid: db742c2a8f319ba4197e0b2d0a08a838, type: 2}
   slapFab: {fileID: 1319740153191642, guid: 7cea55a0442cee14ca97dee9e9ff6ee3, type: 2}
   possessFab: {fileID: 1437910598624610, guid: 8d9b2faf668834642af9d5e36d0d94d5, type: 2}
@@ -277,7 +220,7 @@ SpriteRenderer:
   m_SortingLayerID: 989434673
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0c3db007d519461dbcbc85ffc8ba9e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b54b81a79580649329bd3f1e2c16eaba, type: 3}
   m_Color: {r: 0.8929834, g: 0.9433962, b: 0.12014952, a: 1}
   m_FlipX: 0
   m_FlipY: 0

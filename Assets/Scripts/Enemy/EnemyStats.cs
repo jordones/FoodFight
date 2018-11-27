@@ -6,9 +6,16 @@ public class EnemyStats : MonoBehaviour {
 
     public int health = 100;
     public int attack = 25;
+    private bool alive = true;
+    public Animator animator;
 
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,6 +24,7 @@ public class EnemyStats : MonoBehaviour {
 
         if (health <= 0) {
             Die();
+
         }
     }
 
@@ -30,14 +38,21 @@ public class EnemyStats : MonoBehaviour {
         Collider2D collider = collision.collider;
 
         if (collider.tag == "Character") {
+            animator.SetTrigger("Attack");
             collider.gameObject.GetComponent<Character>().TakeDamage(attack);
         }
+
     }
 
     private void Die () {
-        Debug.Log("Enemy Death");
-        LevelManager.instance.Killed();
-        Destroy(gameObject);    
+        if (alive)
+        {
+            animator.SetTrigger("Die");
+            Debug.Log("Enemy Death");
+            LevelManager.instance.Killed();
+            Destroy(gameObject, 0.417f);
+        }
+        alive = false;
     }
 
     void OnGUI() {
