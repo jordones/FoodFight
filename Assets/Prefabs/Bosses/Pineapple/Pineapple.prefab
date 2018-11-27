@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4982224365717448}
   - component: {fileID: 61362380423047410}
   - component: {fileID: 114534736089927410}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PineappleEyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1394075130272804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.305, z: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4699101999229796}
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -153,12 +153,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142533487498110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd3e98806400d74cac8c52df4dba620, type: 3}
+  m_Script: {fileID: 11500000, guid: 760fc9e31ea984b5fba3a21d9521bc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  attack: 10
-  health: 100
+  health: 200
+  attack: 40
 --- !u!114 &114323808674377202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,19 +170,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7381f29fd948454498c9624f47c4f7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuck: {fileID: 0}
   eyes: {fileID: 114534736089927410}
-  debugState: 1
-  hiddenTime: 3
-  appearedTime: 3
-  enemySpawnRate: 1
+  debugState: 0
+  hiddenTime: 1
+  appearedTime: 1.5
+  enemySpawnRate: 0.25
   appearingTime: 0.05
   hidingTime: 0.05
   spawnFab: {fileID: 1486024094128740, guid: 42600cfcdd721a149b97e6bb41c4ea93, type: 2}
-  appearRange: 5
-  maxEnemiesToSpawn: 2
-  minEnemiesToSpawn: 2
-  battleRange: 25
+  appearRange: 10
+  maxEnemiesToSpawn: 3
+  minEnemiesToSpawn: 1
+  battleRange: 10
 --- !u!114 &114534736089927410
 MonoBehaviour:
   m_ObjectHideFlags: 1
