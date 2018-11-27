@@ -5,18 +5,19 @@ using UnityEngine;
 public class KnifeBehaviour : MonoBehaviour {
 
 	public KnifeEyes eyes = null;
+	public EnemyStats stats = null;
 	public int radius = 10;
 
-	public int minStabTime = 10;
-	public int maxStabTime = 20;
+	public static int minStabBase = 5;
+	public static int maxStabBase = 10;
+
+	private int minStabTime = minStabBase;
+	private int maxStabTime = maxStabBase;
 
 	private float t = 0;
 
 	private static float dt = 1f;
 	private bool stabbing = false;
-
-
-	
 
 	// Use this for initialization
 	void Awake () {
@@ -58,6 +59,11 @@ public class KnifeBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
+		if (stats != null) {
+			minStabTime = Mathf.Max((minStabBase * (stats.health/stats.maxHealth)), 1);
+			maxStabTime = Mathf.Max(maxStabBase * (stats.health/stats.maxHealth), 5);
+		}
+
 		if (CanSeeCharacter()) {
 			if (!stabbing) {
 				Transform target = eyes.character.transform;
