@@ -9,11 +9,8 @@ public class SimpleMovement : MonoBehaviour {
     public int fieldOfVision = 10;
     public BEHAVIOUR behaviour;
     private MOVE_DIRECTION moveDirection = MOVE_DIRECTION.NONE;
+    public EnemyAnimationHelper animationHelper;
 
-	// Use this for initialization
-	void Awake () {
-		
-	}
 
     void Update () {
 
@@ -57,13 +54,19 @@ public class SimpleMovement : MonoBehaviour {
 		int dir = 0;
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-                    break;
+                Debug.Log("Idling");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.IDLE);
+                break;
             
             case MOVE_DIRECTION.LEFT:
+                Debug.Log("Walk Left");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = -1;
                 break;
             
             case MOVE_DIRECTION.RIGHT:
+                Debug.Log("Walk Right");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = 1;
                 break;
         }
