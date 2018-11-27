@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pineapple : TypedEnemy {
     private static float HIDING_DELTA_Y = 10f;
+	private PineapleEyes eyes = null;
 
     public bool debugState;
 
@@ -19,9 +20,6 @@ public class Pineapple : TypedEnemy {
 	public float hidingTime = 0.05f;
 	public int attack = 10;
 	public int health = 100;
-
-    // Should be the character
-	public GameObject character;
 	
 	// The enemy that the boss will spawn 
 	public GameObject spawnFab;
@@ -32,7 +30,6 @@ public class Pineapple : TypedEnemy {
 
     // Max number of enemies to spawn in a spawn cycle
 	public int maxEnemiesToSpawn = 2;
-
 
     // The range to the left and to the right of the initial spawn location that the boss will interact with the character
 	public float battleRange = 10f;
@@ -70,13 +67,28 @@ public class Pineapple : TypedEnemy {
 		StartCoroutine("BattlePlayer", 0.0f);		
 	}
 
+    private bool CanSeeCharacter(){
+		return eyes != null && eyes.active
+		                    && initialX + battleRange >= eyes.character.transform.position.x
+		                    && initialX - battleRange <= eyes.character.transform.position.x;
+
+	}
+
+	void Update() {
+		// if (CanSeeCharacter())
+		// transform.LookAt(eyes.character.transform);
+	}
+
 	void FixedUpdate() {
-		bool targetToRight = gameObject.transform.position.x < character.gameObject.transform.position.x;
-		if (targetToRight && !facingRight){
-			Flip();
-		} else if (!targetToRight && facingRight) {
-			Flip();
+		if (CanSeeCharacter()) {
+		    bool targetToRight = gameObject.transform.position.x < eyes.character.gameObject.transform.position.x;
+			if (targetToRight && !facingRight){
+			    Flip();
+			} else if (!targetToRight && facingRight) {
+				Flip();
+			}
 		}
+
 	}
 
 	void Flip() {
@@ -133,11 +145,9 @@ public class Pineapple : TypedEnemy {
 		float appearX = initialX;
 		
         while (true) {
-			targetInRange = initialX + battleRange >= character.gameObject.transform.position.x
-		                && initialX - battleRange <= character.gameObject.transform.position.x;
 					
-			if (!targetInRange) {
-				if(currentState != PineappleState.HIDDEN || currentState != PineappleState.HIDING) {
+			if (!CanSeeCharacter()) {
+				if(currentState != PineappleState.HIDDEN && currentState != PineappleState.HIDING) {
 				    ChangeState(PineappleState.HIDING);
 				}
 			}
@@ -151,7 +161,7 @@ public class Pineapple : TypedEnemy {
 					if (spawnEnemy) {
 						appearX = SpawnEnemies_AppearX();
 					} else {
-						appearX = character.transform.position.x;
+						appearX = eyes.character.transform.position.x;
 					}
 		
 					// show indicator to where boss will come up?, then wait
@@ -220,8 +230,8 @@ public class Pineapple : TypedEnemy {
 	// will be spawning enemies after it appears
     private float SpawnEnemies_AppearX() {
 		int sign = 1 == Random.Range(0, 2) ? -1 : 1;
-		float targetX = character.transform.position.x;
-		float targetY = character.transform.position.y;
+		float targetX = eyes.character.transform.position.x;
+		float targetY = eyes.character.transform.position.y;
 		float xPos = targetX + appearRange*sign;
 
 

@@ -160,11 +160,70 @@ Prefab:
     - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
         type: 2}
       propertyPath: enemyTypes.Array.data[1]
-      value: SushiBoi
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
+        type: 2}
+      propertyPath: active
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &306613085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306613086}
+  - component: {fileID: 306613087}
+  m_Layer: 12
+  m_Name: PineappleEyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &306613086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306613085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.305, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 898100839}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &306613087
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306613085}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &516126968
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +540,7 @@ GameObject:
   - component: {fileID: 898100838}
   - component: {fileID: 898100837}
   - component: {fileID: 898100840}
+  - component: {fileID: 898100841}
   m_Layer: 12
   m_Name: Boss7
   m_TagString: Enemy
@@ -500,18 +560,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.31, y: 0.61}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.31, y: 0.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.61}
+  m_Size: {x: 0.15, y: 0.17}
   m_EdgeRadius: 0
 --- !u!212 &898100838
 SpriteRenderer:
@@ -548,7 +608,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18d7d31828ba346b48c67027a83bb219, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f5956d7906574a7492f006ade36d2a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -567,8 +627,9 @@ Transform:
   m_GameObject: {fileID: 898100836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 79.87, y: 0.01, z: -0.1953125}
-  m_LocalScale: {x: 10, y: 10, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_Children:
+  - {fileID: 306613086}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -579,7 +640,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 898100836}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -591,7 +652,31 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &898100841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 898100836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7381f29fd948454498c9624f47c4f7c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  debugState: 0
+  hiddenTime: 3
+  appearedTime: 3
+  enemySpawnRate: 1
+  appearingTime: 0.05
+  hidingTime: 0.05
+  attack: 10
+  health: 100
+  spawnFab: {fileID: 1486024094128740, guid: 42600cfcdd721a149b97e6bb41c4ea93, type: 2}
+  appearRange: 10
+  maxEnemiesToSpawn: 2
+  battleRange: 10
 --- !u!1 &918281879
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +1010,12 @@ Prefab:
     - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
         type: 2}
       propertyPath: enemyTypes.Array.data[1]
-      value: SushiBoi
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451247267755382, guid: fcd19fa95b9314cb5a195d75805df6d4,
+        type: 2}
+      propertyPath: active
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcd19fa95b9314cb5a195d75805df6d4, type: 2}
@@ -1300,6 +1390,11 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+        type: 2}
+      propertyPath: health
+      value: 10000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
   m_IsPrefabAsset: 0
@@ -1470,6 +1565,11 @@ Prefab:
     - target: {fileID: 1000349595446870, guid: 12714d370f01d494794384165b3d43b4, type: 2}
       propertyPath: m_Name
       value: ItemSpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394814650151334, guid: 12714d370f01d494794384165b3d43b4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12714d370f01d494794384165b3d43b4, type: 2}
