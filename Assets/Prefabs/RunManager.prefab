@@ -9,50 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1696467052541948}
+  m_RootGameObject: {fileID: 1112190448017908}
   m_IsPrefabAsset: 1
---- !u!1 &1696467052541948
+--- !u!1 &1112190448017908
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4995626279389914}
-  - component: {fileID: 114497008494600086}
+  - component: {fileID: 4671119492943592}
+  - component: {fileID: 114467733736184750}
   m_Layer: 0
-  m_Name: ItemPool
+  m_Name: RunManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4995626279389914
+--- !u!4 &4671119492943592
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1696467052541948}
+  m_GameObject: {fileID: 1112190448017908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.097025, y: 5.5773945, z: 1.55722}
+  m_LocalPosition: {x: 321.50143, y: 158.58327, z: -3.4375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114497008494600086
+--- !u!114 &114467733736184750
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1696467052541948}
+  m_GameObject: {fileID: 1112190448017908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b62a7a3085c04c32ba3a5b83dac229f, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b10b2129ba42c4cbb263045da4a012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ready: 0
-  items:
-  - {fileID: 1034290445990190, guid: da0456e15702f4912b429f04a1538f9e, type: 2}
-  - {fileID: 1397161501090052, guid: adff72b10650948c2b40ddc2e46d237c, type: 2}
-  pool: 00000000

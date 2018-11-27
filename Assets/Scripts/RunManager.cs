@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RunManager : MonoBehaviour {
@@ -14,33 +15,42 @@ public class RunManager : MonoBehaviour {
 	void Awake () {
         if (instance == null) {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
         }
 	}
 
 	public void RunComplete() {
-		// Pick new items to unlock
-		// Unlock them
-		// Bring up RunCompleted scene
-		// Pass in new items
-		CleanupPersistentObjects();
+		List<int> unlocked = ItemPool.instance.GetRandomLockedIds(3);
 
+		// Pass in new items to success screen
+		RunCompleted.instance.UpdateUnlockedItems(
+			unlocked.Select(x => ItemPool.instance.items[x].GetComponent<SpriteRenderer>().sprite).ToList()
+		);
+
+		// Give them to itempool
+		foreach (int id in unlocked) {
+			ItemPool.instance.UnlockItem(id);
+		}
+		// Give them to usermanager
+		StartCoroutine(ItemPool.instance.SyncUnlockedToUser());
+
+		// Cleanup
+		CleanupPersistentObjects();
 	}
 
 	public void RunFailed() {
-		// Bring up RunFailed scene
+		// Cleanup
 		CleanupPersistentObjects();
 	}
 
 	public void CleanupPersistentObjects() {
-		// Destroy character
-		// Destroy UI
-		// 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		if (Character.instance != null) {
+			Destroy(Character.instance.gameObject);
+		}
+		if (UIManager.instance != null) {
+			Destroy(UIManager.instance.gameObject);
+		}
 	}
 }
