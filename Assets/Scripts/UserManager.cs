@@ -136,7 +136,7 @@ public class UserManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeFirebase();
-            //LoadLocal();
+            LoadLocal();
             ready = true;
         } else {
             Destroy(gameObject);
