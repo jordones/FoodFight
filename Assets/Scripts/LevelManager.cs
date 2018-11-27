@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour {
 	private int bossKilled {get; set;} = 0;
 	public int enemyGoal = 10;
 	public int bossGoal = 1;
+	public bool finished = false;
 
 	public List<OnLevelGoal> goalSubscribers = new List<OnLevelGoal>();
 
@@ -38,10 +39,11 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if (killed >= enemyGoal && bossKilled >= bossGoal) {
-			Debug.Log("Level finished Killed");
+		if (killed >= enemyGoal && bossKilled >= bossGoal && !finished) {
+			finished = true;
+			Debug.Log("Level finished");
+			
 			StartCoroutine(EndLevel());
-			Destroy(gameObject);
 		}
 	}
 
