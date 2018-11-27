@@ -29,8 +29,6 @@ public class Character : MonoBehaviour, OnLevelGoal
 
     public List<Item> inventory = new List<Item>();
 
-    public Transform groundCheck;
-
     private Rigidbody2D rb2d;
     public Rigidbody2D spewFab;
     public GameObject slapFab;
@@ -47,7 +45,6 @@ public class Character : MonoBehaviour, OnLevelGoal
         {
             instance = this;
             rb2d = GetComponent<Rigidbody2D>();
-            groundCheck = transform.Find("groundCheck");
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -69,10 +66,6 @@ public class Character : MonoBehaviour, OnLevelGoal
     // Update is called once per frame
     void Update()
     {
-
-        // Check if the character is on the ground
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, (1 << LayerMask.NameToLayer("Ground")) | (1 << LayerMask.NameToLayer("Enemies")));
-
         // Jump, only if the character is on the ground
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -208,6 +201,7 @@ public class Character : MonoBehaviour, OnLevelGoal
             // anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+            grounded = false;
         }
     }
 
@@ -272,6 +266,13 @@ public class Character : MonoBehaviour, OnLevelGoal
         inventory.Add(item);
         itemObject.transform.parent = gameObject.transform;
         item.OnPickup(this);
+    }
+
+    public void OnCollisionEnter2D(Collision2D col) {
+        if(col.gameObject.layer == LayerMask.NameToLayer("Ground")
+            || col.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
+            grounded = true;
+        }
     }
 
     public void OnLevelGoal()

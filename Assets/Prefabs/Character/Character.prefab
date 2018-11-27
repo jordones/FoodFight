@@ -11,21 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1934354566699002}
   m_IsPrefabAsset: 1
---- !u!1 &1326678214872154
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4860640140978896}
-  m_Layer: 11
-  m_Name: groundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1355486930200128
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,26 +67,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934354566699002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.07, y: -2.82, z: 0}
+  m_LocalPosition: {x: 102.1, y: 5.2, z: 0}
   m_LocalScale: {x: 0.54516, y: 1.1302354, z: 1}
   m_Children:
   - {fileID: 4302345188609296}
-  - {fileID: 4860640140978896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4860640140978896
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1326678214872154}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4849209204095566}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20442813769740308
 Camera:
@@ -211,7 +182,6 @@ MonoBehaviour:
   slapping: 0
   slapDebounce: 0
   inventory: []
-  groundCheck: {fileID: 0}
   spewFab: {fileID: 50646885619520188, guid: db742c2a8f319ba4197e0b2d0a08a838, type: 2}
   slapFab: {fileID: 1319740153191642, guid: 7cea55a0442cee14ca97dee9e9ff6ee3, type: 2}
   possessFab: {fileID: 1437910598624610, guid: 8d9b2faf668834642af9d5e36d0d94d5, type: 2}
