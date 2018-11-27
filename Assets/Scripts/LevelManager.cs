@@ -37,6 +37,14 @@ public class LevelManager : MonoBehaviour {
         }
 	}
 
+	void Update() {
+		if (killed >= enemyGoal && bossKilled >= bossGoal) {
+			Debug.Log("Level finished Killed");
+			StartCoroutine(EndLevel());
+			Destroy(gameObject);
+		}
+	}
+
 	void OnGUI () {
 		GUI.Label(new Rect (50,50,100,50), "Kills: " + killed + "/" + enemyGoal);
 		GUI.Label(new Rect (50,70,100,50), "Bosses Killed: " + bossKilled + "/" + bossGoal);
@@ -61,12 +69,8 @@ public class LevelManager : MonoBehaviour {
 				}
 				break;
 			case EnemyTypes.BOSS:
-				Debug.Log("Killed Tpye: Boss");
+				Debug.Log("Killed Type: Boss");
 			    bossKilled++;
-				if (bossKilled == bossGoal) {
-				    Debug.Log("Boss Killed");
-					StartCoroutine(EndLevel());
-				}
 				break;
 		}
 	}
