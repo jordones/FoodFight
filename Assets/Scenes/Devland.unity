@@ -897,7 +897,7 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1834b3cb10f62624caa1726d4d49a5e6, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &1356168688
+--- !u!1001 &1297988998
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -993,10 +993,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1080601059089760, guid: 16982f6b3e3ac427382283721de39248, type: 2}
-      propertyPath: m_Name
-      value: Health
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16982f6b3e3ac427382283721de39248, type: 2}
@@ -1144,6 +1140,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3bc5fae6ebd8214db2c941d74ea3a08, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1641321045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114455492314578690, guid: 16982f6b3e3ac427382283721de39248,
+    type: 2}
+  m_PrefabInternal: {fileID: 1297988998}
+  m_Script: {fileID: 11500000, guid: 1d95587712e8e4e5da512c3e5b2c4736, type: 3}
 --- !u!1 &1695638703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,32 +1486,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 4302345188609296, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860640140978896, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 50910267586119062, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
         type: 2}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50910267586119062, guid: 72e8c665a24bc0945be31afb9df0d2e6,
+      propertyPath: itemsUI
+      value: 
+      objectReference: {fileID: 1641321045}
+    - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
         type: 2}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860640140978896, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.8
+      propertyPath: maxHealth
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 114658378730312358, guid: 72e8c665a24bc0945be31afb9df0d2e6,
         type: 2}
       propertyPath: health
-      value: 10000
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e8c665a24bc0945be31afb9df0d2e6, type: 2}

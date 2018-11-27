@@ -9,9 +9,10 @@ public class Spew : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+        playerScript = GameObject.FindGameObjectWithTag("Character").GetComponent<Character>();
+
 		// Destory this thing after n seconds if it does not collide with anything
 		Destroy(gameObject, 1.5f);
-
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {

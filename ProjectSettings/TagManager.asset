@@ -11,6 +11,7 @@ TagManager:
   - Spawner
   - SpawnPoint
   - Terrain
+  - UI Item
   layers:
   - Default
   - TransparentFX

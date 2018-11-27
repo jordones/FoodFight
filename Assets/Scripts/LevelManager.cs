@@ -38,8 +38,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.Label(new Rect (Screen.width - 150,0,100,50), "Kills: " + killed + "/" + enemyGoal);
-		GUI.Label(new Rect (Screen.width - 150,20,100,50), "Bosses Killed: " + bossKilled + "/" + bossGoal);
+		GUI.Label(new Rect (50,50,100,50), "Kills: " + killed + "/" + enemyGoal);
+		GUI.Label(new Rect (50,70,100,50), "Bosses Killed: " + bossKilled + "/" + bossGoal);
 	}
 
 	public IEnumerator EndLevel() {
