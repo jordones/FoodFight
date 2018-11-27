@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pineapple : TypedEnemy {
+public class PineappleBehaviour : MonoBehaviour {
+	public GameObject fuck;
     private static float HIDING_DELTA_Y = 10f;
-	private PineapleEyes eyes = null;
+	public PineappleEyes eyes = null;
 
     public bool debugState;
 
@@ -18,8 +19,6 @@ public class Pineapple : TypedEnemy {
 	public float enemySpawnRate = 1f;
 	public float appearingTime = 0.05f;
 	public float hidingTime = 0.05f;
-	public int attack = 10;
-	public int health = 100;
 	
 	// The enemy that the boss will spawn 
 	public GameObject spawnFab;
@@ -29,7 +28,8 @@ public class Pineapple : TypedEnemy {
 	public float appearRange = 10f;
 
     // Max number of enemies to spawn in a spawn cycle
-	public int maxEnemiesToSpawn = 2;
+	public int maxEnemiesToSpawn = 4;
+	public int minEnemiesToSpawn = 2;
 
     // The range to the left and to the right of the initial spawn location that the boss will interact with the character
 	public float battleRange = 10f;
@@ -68,15 +68,10 @@ public class Pineapple : TypedEnemy {
 	}
 
     private bool CanSeeCharacter(){
-		return eyes != null && eyes.active
+		return eyes != null && eyes.character != null
 		                    && initialX + battleRange >= eyes.character.transform.position.x
 		                    && initialX - battleRange <= eyes.character.transform.position.x;
 
-	}
-
-	void Update() {
-		// if (CanSeeCharacter())
-		// transform.LookAt(eyes.character.transform);
 	}
 
 	void FixedUpdate() {
@@ -113,59 +108,25 @@ public class Pineapple : TypedEnemy {
 		AllowGroundCollisions();
 	}
 
-	
-    public void TakeDamage (int amount) {
-        health -= amount;
-		if (health  <= 0) {
-			Die();
-		}
-    }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        Collider2D collider = collision.collider;
-        if (collider.tag == "Character") {
-            collider.gameObject.GetComponent<Character>().TakeDamage(attack);
-        }
-    }
-
-    private void Die () {
-        if (LevelManager.instance) {
-			LevelManager.instance.Killed(this);
-		}
-        Destroy(gameObject);    
-    }
-    void OnGUI() {
-        Vector3 pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-
-		GUI.Label(new Rect (pos.x, Screen.height - pos.y - 70, 30, 30), "" + health);
-    }
-
 	private IEnumerator BattlePlayer() {
 
 		float appearX = initialX;
 		
         while (true) {
-					
-			if (!CanSeeCharacter()) {
-				if(currentState != PineappleState.HIDDEN && currentState != PineappleState.HIDING) {
-				    ChangeState(PineappleState.HIDING);
-				}
-			}
-			
 			switch(currentState) {
-				case PineappleState.HIDDEN:
+				case PineappleState.SELECTING_BEHAVIOUR:
 					// Choose Behaviour: Spawn an enemy or dont
 					spawnEnemy = 1 == Random.Range(0,2) ? true : false;
+					spawnEnemy = true;
 					
 					// If the boss chose to spawn an enemy when it appears
 					if (spawnEnemy) {
 						appearX = SpawnEnemies_AppearX();
+						appearX = AdjustAppearX(appearX);
 					} else {
-						appearX = eyes.character.transform.position.x;
+						appearX = AdjustAppearX(eyes.character.transform.position.x);
 					}
 		
-					// show indicator to where boss will come up?, then wait
-					yield return new WaitForSeconds(hiddenTime);
 					ChangeState(PineappleState.APPEARING);
 
 				break;
@@ -191,7 +152,7 @@ public class Pineapple : TypedEnemy {
 					
 				break;
 				case PineappleState.SPAWNING_ENEMY:
-					int numSpawn = Random.Range(0, maxEnemiesToSpawn+1);
+					int numSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn+1);
 					for (int i = 0; i < numSpawn; i++) {
 						// X position for spawning is either on to the left or the right of the boss
 						// and just outside the boss's collider
@@ -210,11 +171,22 @@ public class Pineapple : TypedEnemy {
 					// Tell the boss to hide, reposition the boss to it's
 					StartCoroutine(SmoothMovement(new Vector2(transform.position.x, groundY-HIDING_DELTA_Y), hidingTime));
 					yield return new WaitForSeconds(hidingTime);
+		
 					ChangeState(PineappleState.HIDDEN);
+				break;
+				case PineappleState.HIDDEN:
+				    if (CanSeeCharacter()) {
+					    ChangeState(PineappleState.SELECTING_BEHAVIOUR);
+					} else {
+						if (debugState) {
+							Debug.Log("Pinapple is hiding and cannot see the enemy");
+						}
 
+					}
+				    yield return new WaitForSeconds(hiddenTime);
 				break;
 			}
-		yield return null;
+		    yield return null;
 		}
 
 	}
@@ -229,22 +201,34 @@ public class Pineapple : TypedEnemy {
 	// that is appearRange units away. The boss will only appear using this pattern if it
 	// will be spawning enemies after it appears
     private float SpawnEnemies_AppearX() {
+		if (eyes == null) {
+			return initialX;
+		}
 		int sign = 1 == Random.Range(0, 2) ? -1 : 1;
-		float targetX = eyes.character.transform.position.x;
-		float targetY = eyes.character.transform.position.y;
-		float xPos = targetX + appearRange*sign;
+		float xPos = eyes.character.transform.position.x + appearRange*sign;
+		return xPos;
+	}
 
+    // Checks if there is enough horizantle space for the pineapple to occupy when it appears.
+    // if not, adjusts X so that there is
+	private float AdjustAppearX(float xPos) {
+		float charX = eyes.character.transform.position.x;
+		float charY = eyes.character.transform.position.y;
 
-        // Raycast from the character to the chosen position. If there is a wall in the way,
+		// Raycast from the character to the chosen position. If there is a wall in the way,
 		// change the chosen position to be on the side of the wall that is in the level bounds.
-		Vector2 sourceCast = new Vector2(targetX, targetY);
-		Vector2 destCast = new Vector2(xPos, targetY);
-		RaycastHit2D hit = Physics2D.Raycast(sourceCast, destCast, (1 << LayerMask.NameToLayer("Ground")) | 1 << LayerMask.NameToLayer("Wall"));
+		Vector2 sourceCast = new Vector2(charX, charY);
+		Vector2 dir = xPos - charX > 0 ? Vector2.right : Vector2.left;
+	
+		RaycastHit2D hit = Physics2D.Raycast(sourceCast, dir, Mathf.Abs(xPos- charX), (1 << LayerMask.NameToLayer("Ground")));
 
-		if (hit) {
+	
+		if (hit && hit.collider.tag == "Wall") {
+			fuck = hit.collider.gameObject;
 			xPos = hit.transform.position.x - hit.collider.bounds.extents.x - bc2d.bounds.extents.x;
 		}
 		return xPos;
+		
 	}
 	private void IgnoreGroundCollisions() {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemies"), LayerMask.NameToLayer("Ground"), true);
@@ -272,6 +256,9 @@ public class Pineapple : TypedEnemy {
 				case PineappleState.HIDING:
 				    name = "Hiding";
 				break;
+				case PineappleState.SELECTING_BEHAVIOUR:
+				    name = "Selecting behaviour";
+				break;
 			}
 			return name;
 	}
@@ -282,5 +269,6 @@ enum PineappleState {
 	APPEARED,
 	HIDING,
 	APPEARING,
-	SPAWNING_ENEMY
+	SPAWNING_ENEMY,
+	SELECTING_BEHAVIOUR
 }

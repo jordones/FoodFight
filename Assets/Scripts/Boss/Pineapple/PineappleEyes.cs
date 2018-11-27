@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PineapleEyes : MonoBehaviour {
+public class PineappleEyes : MonoBehaviour {
 
 	// Use this for initialization
 	public GameObject character = null;
-	public bool active = false;
 	void Start () {
 		
 	}
@@ -15,17 +14,15 @@ public class PineapleEyes : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void OnTriggerEnter2D(Collider col) {
+	public void OnTriggerEnter2D(Collider2D col) {
 		if(col.tag == "Character") {
-			this.character = col.gameObject;
-			this.active = true;
+			character = col.gameObject;
 		}
 	}
 
-	public void OnTriggerExit2D(Collider col) {
+	public void OnTriggerExit2D(Collider2D col) {
 		if(col.tag == "Character") {
-			this.character = col.gameObject;
-			this.active = false;
+			character = col.gameObject;
 		}
 
 	}
