@@ -10,7 +10,7 @@ public class RunCompleted : MonoBehaviour
 
     public void UpdateUnlockedItems(List<Item> items)
     {
-        for (int i = 0; i < unlockedItemWrapper.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             unlockedItemWrapper[i].sprite = items[i].transform.parent.GetComponent<SpriteRenderer>().sprite;
         } 
