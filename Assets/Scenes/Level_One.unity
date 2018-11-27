@@ -58209,7 +58209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 559239773}
-  next: Level_Three
+  next: Level_Two
   enemyGoal: 5
   bossGoal: 1
 --- !u!1 &1068499816

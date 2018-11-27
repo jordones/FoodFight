@@ -8,24 +8,14 @@ public class SimpleMovement : MonoBehaviour {
     public float moveForce = 50f;
     public BEHAVIOUR behaviour;
     private MOVE_DIRECTION moveDirection = MOVE_DIRECTION.NONE;
-    public EnemyVision enemyVision;
 
-	// Use this for initialization
-	void Awake () {
-		
-	}
+    public EnemyVision enemyVision;
+    public EnemyAnimationHelper animationHelper;
+
+
 
     void Update () {
-
-        //Vector2 fieldLeft = transform.position;
-        //fieldLeft.x -= fieldOfVision;
-
-        //Vector2 fieldRight = transform.position;
-        //fieldRight.x += fieldOfVision;
-
-
-        //bool visionRight  = Physics2D.Linecast(transform.position, fieldRight, 1 << LayerMask.NameToLayer("Player"));
-        //bool visionLeft = Physics2D.Linecast(transform.position, fieldLeft, 1 << LayerMask.NameToLayer("Player"));
+      
         bool visionRight = false;
         bool visionLeft = false;
 
@@ -80,13 +70,19 @@ public class SimpleMovement : MonoBehaviour {
 		int dir = 0;
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-                    break;
+                Debug.Log("Idling");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.IDLE);
+                break;
             
             case MOVE_DIRECTION.LEFT:
+                Debug.Log("Walk Left");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = -1;
                 break;
             
             case MOVE_DIRECTION.RIGHT:
+                Debug.Log("Walk Right");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = 1;
                 break;
         }
