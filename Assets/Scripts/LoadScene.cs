@@ -15,6 +15,7 @@ public class LoadScene : MonoBehaviour
     public static IEnumerator AsyncLoadScene(string scene)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        Debug.Log(asyncLoad.isDone);
 
         // Wait until the asynchronous scene fully loads
         yield return new WaitUntil(() => !asyncLoad.isDone);
