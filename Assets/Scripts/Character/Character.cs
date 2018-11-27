@@ -6,10 +6,6 @@ public class Character : MonoBehaviour, OnLevelGoal {
 
 	public static Character instance = null;
 
-
-    public int bossSpawnX = 0;
-    public int bossSpawnY = 0;
-
 	public int maxHealth = 100;
 	public int health = 100;
 	public int healthMinus = 10;
@@ -234,6 +230,6 @@ public class Character : MonoBehaviour, OnLevelGoal {
 	}
 
 	public void OnLevelGoal() {
-		gameObject.transform.position = new Vector3 (bossSpawnX,bossSpawnY, 0);
+	// 	gameObject.transform.position = new Vector3 (bossSpawnX,bossSpawnY, 0);
 	}
 }
