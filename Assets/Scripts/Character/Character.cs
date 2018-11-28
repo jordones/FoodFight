@@ -38,6 +38,8 @@ public class Character : MonoBehaviour, OnLevelGoal
 
     private GameObject slap;
 
+    public AudioSource spewSound;
+
     private bool facingRight = true;
 
     // Use this for initialization
@@ -119,6 +121,7 @@ public class Character : MonoBehaviour, OnLevelGoal
             Rigidbody2D spew = Instantiate(spewFab, transform.position, Quaternion.Euler(new Vector3(0, 0, 180f))) as Rigidbody2D;
             spew.velocity = new Vector2(-spewSpeed, 0);
         }
+        spewSound.Play();
     }
 
     void handleSlap()

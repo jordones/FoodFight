@@ -6,6 +6,11 @@ public class Spew : MonoBehaviour {
 
 	public static Character playerScript;
 
+	public int maxCollisions = 1;
+	private int collisionCount = 0;
+	public AudioSource audioSource;
+	public AudioClip [] spewHitClips;
+
 
 	// Use this for initialization
 	void Start() {
@@ -16,11 +21,21 @@ public class Spew : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
+		if (collisionCount >= maxCollisions) {
+			return;
+		}
+
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
 			col.gameObject.GetComponent<EnemyStats>().TakeDamage(playerScript.spewDamage);
 			Debug.Log("Enemy Hit");
-		    Destroy(gameObject);
+
+		    AudioClip clip = spewHitClips[Random.Range(0,spewHitClips.Length)];
+			audioSource.PlayOneShot(clip);
+			GetComponent<Renderer>().enabled = false;
+			if (collisionCount <= maxCollisions) {
+			    Destroy(gameObject, clip.length);
+			}
 		} else if (col.tag == "Terrain") {
 			Debug.Log("Terrain Hit");
 		    Destroy(gameObject);
