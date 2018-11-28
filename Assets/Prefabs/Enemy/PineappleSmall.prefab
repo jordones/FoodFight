@@ -51,12 +51,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4029177995601512}
   - component: {fileID: 212745798926178272}
-  - component: {fileID: 61990641369155516}
   - component: {fileID: 50117157988528828}
   - component: {fileID: 114577699626874220}
   - component: {fileID: 114218641941690060}
   - component: {fileID: 95734234312452518}
   - component: {fileID: 114742964601787674}
+  - component: {fileID: 70545173410689644}
   m_Layer: 12
   m_Name: PineappleSmall
   m_TagString: Enemy
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485963298765130}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.083242, y: 1.3102217, z: -0.9759}
+  m_LocalPosition: {x: 122.41417, y: -2.6103973, z: -0.9759}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4845950989381738}
@@ -244,10 +244,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61990641369155516
-BoxCollider2D:
+--- !u!70 &70545173410689644
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -258,19 +258,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.25}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0.06350964}
+  m_Size: {x: 0.81705534, y: 1.407019}
+  m_Direction: 0
 --- !u!70 &70559947252941494
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -329,8 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 176
-  health: 100
+  maxHealth: 40
+  health: 40
   attack: 25
   animationHelper: {fileID: 114742964601787674}
   animatable: 1
@@ -346,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320465852c9849e58a46a93a1df7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   moveForce: 50
   behaviour: 0
   enemyVision: {fileID: 114127015822768036}

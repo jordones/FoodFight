@@ -53,12 +53,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4894380434427364}
   - component: {fileID: 212806366728373292}
-  - component: {fileID: 61412575363199946}
   - component: {fileID: 50844099462292984}
   - component: {fileID: 114993464643005098}
   - component: {fileID: 114042842223583222}
   - component: {fileID: 95028439691486776}
   - component: {fileID: 114551877169030208}
+  - component: {fileID: 58799881542797492}
   m_Layer: 12
   m_Name: Chicken
   m_TagString: Enemy
@@ -178,7 +178,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362212457148308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.451433, y: -0.33964205, z: -0.9759}
+  m_LocalPosition: {x: 123.031425, y: -2.8088024, z: -0.9759}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4392049349517102}
@@ -244,10 +244,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61412575363199946
-BoxCollider2D:
+--- !u!58 &58799881542797492
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -259,18 +259,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.64
 --- !u!70 &70439931453921808
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -316,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 176
+  maxHealth: 100
   health: 100
   attack: 25
   animationHelper: {fileID: 114551877169030208}
@@ -368,11 +358,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320465852c9849e58a46a93a1df7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   moveForce: 50
   behaviour: 0
   enemyVision: {fileID: 114710990257514306}
   animationHelper: {fileID: 114551877169030208}
+  facingRight: 1
+  stunTime: 2
 --- !u!212 &212040191399404682
 SpriteRenderer:
   m_ObjectHideFlags: 1

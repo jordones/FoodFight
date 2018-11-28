@@ -36,12 +36,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4266334938752836}
   - component: {fileID: 212063021388966070}
-  - component: {fileID: 61439993157428886}
   - component: {fileID: 50064793824829360}
   - component: {fileID: 114484744536638948}
   - component: {fileID: 114958072281612056}
   - component: {fileID: 95287223465352246}
   - component: {fileID: 114805620735606008}
+  - component: {fileID: 70466875823012286}
   m_Layer: 12
   m_Name: Eggplant
   m_TagString: Enemy
@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229931776535802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.451433, y: -0.33964205, z: -0.9759}
+  m_LocalPosition: {x: 124.376175, y: -2.6324425, z: -0.9759}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4732855286326410}
@@ -244,33 +244,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61439993157428886
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1229931776535802}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!70 &70038189244458346
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -286,6 +261,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 20, y: 10}
   m_Direction: 1
+--- !u!70 &70466875823012286
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229931776535802}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.7288748, y: 1.28}
+  m_Direction: 0
 --- !u!95 &95287223465352246
 Animator:
   serializedVersion: 3
@@ -326,11 +316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320465852c9849e58a46a93a1df7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  moveForce: 50
+  movementSpeed: 3
+  moveForce: 70
   behaviour: 0
   enemyVision: {fileID: 114908690617690022}
   animationHelper: {fileID: 114805620735606008}
+  facingRight: 1
+  stunTime: 2
 --- !u!114 &114805620735606008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 176
+  maxHealth: 100
   health: 100
   attack: 25
   animationHelper: {fileID: 114805620735606008}

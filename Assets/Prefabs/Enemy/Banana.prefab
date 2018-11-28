@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4844832682184802}
-  - component: {fileID: 58098026420177724}
+  - component: {fileID: 70893883595623828}
   m_Layer: 13
   m_Name: PossessCheck
   m_TagString: Posessable
@@ -69,12 +69,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4160642651733920}
   - component: {fileID: 212241049542833526}
-  - component: {fileID: 61566155642256966}
   - component: {fileID: 50965485650401584}
   - component: {fileID: 114855725592299548}
   - component: {fileID: 114470170045566304}
   - component: {fileID: 95733653880577016}
   - component: {fileID: 114533454522204380}
+  - component: {fileID: 70528855258648662}
   m_Layer: 12
   m_Name: Banana
   m_TagString: Enemy
@@ -179,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1253499088408384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.423317, y: -2.9225004, z: 0.7292218}
+  m_LocalPosition: {x: 120.25376, y: -2.4340377, z: 0.7292218}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4948607785594770}
@@ -274,25 +274,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &58098026420177724
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1194608126926690}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!61 &61566155642256966
-BoxCollider2D:
+--- !u!70 &70528855258648662
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -303,19 +288,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0992012, y: 0}
+  m_Size: {x: 1.2252426, y: 1.6}
+  m_Direction: 0
 --- !u!70 &70573939506850300
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -331,6 +306,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 20, y: 10}
   m_Direction: 1
+--- !u!70 &70893883595623828
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194608126926690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12124634, y: 0.022045135}
+  m_Size: {x: 1.1833954, y: 1.617259}
+  m_Direction: 0
 --- !u!95 &95733653880577016
 Animator:
   serializedVersion: 3
@@ -361,8 +351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 176
-  health: 35
+  maxHealth: 100
+  health: 100
   attack: 25
   animationHelper: {fileID: 114533454522204380}
   animatable: 1
@@ -400,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320465852c9849e58a46a93a1df7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   moveForce: 50
   behaviour: 1
   enemyVision: {fileID: 114964203531591532}

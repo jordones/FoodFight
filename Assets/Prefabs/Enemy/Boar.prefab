@@ -84,12 +84,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4057582430410188}
   - component: {fileID: 212626191251608546}
-  - component: {fileID: 61776718248004284}
   - component: {fileID: 50355079417352168}
   - component: {fileID: 114115163166126538}
   - component: {fileID: 114595096389947836}
   - component: {fileID: 95356959233247046}
   - component: {fileID: 114443661341851334}
+  - component: {fileID: 58912154455902708}
   m_Layer: 12
   m_Name: Boar
   m_TagString: Enemy
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263098784706306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.451433, y: -0.33964205, z: -0.9759}
+  m_LocalPosition: {x: 121.5985, y: -1.9049577, z: -0.9759}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4990789069039358}
@@ -244,10 +244,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61776718248004284
-BoxCollider2D:
+--- !u!58 &58912154455902708
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -259,18 +259,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.64
 --- !u!70 &70695749283721704
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -315,11 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a320465852c9849e58a46a93a1df7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   moveForce: 50
   behaviour: 0
   enemyVision: {fileID: 114911140197480730}
   animationHelper: {fileID: 114443661341851334}
+  facingRight: 1
+  stunTime: 2
 --- !u!114 &114210130698880132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 176
+  maxHealth: 100
   health: 100
   attack: 25
   animationHelper: {fileID: 114443661341851334}
