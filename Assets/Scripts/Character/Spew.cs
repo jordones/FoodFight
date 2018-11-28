@@ -6,10 +6,10 @@ public class Spew : MonoBehaviour {
 
 	public static Character playerScript;
 
-	public int maxCollisions = 1;
-	private int collisionCount = 0;
 	public AudioSource audioSource;
 	public AudioClip [] spewHitClips;
+
+	private bool queuedToDestroy = false;
 
 
 	// Use this for initialization
@@ -21,26 +21,28 @@ public class Spew : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (collisionCount >= maxCollisions) {
+		if (queuedToDestroy) {
 			return;
 		}
 
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
-			collisionCount++;
 			col.gameObject.GetComponent<EnemyStats>().TakeDamage(playerScript.spewDamage);
 			Debug.Log("Enemy Hit");
 
 		    AudioClip clip = spewHitClips[Random.Range(0,spewHitClips.Length)];
 			audioSource.PlayOneShot(clip);
-			GetComponent<Renderer>().enabled = false;
 			
-			if (collisionCount >= maxCollisions) {
+			if (!queuedToDestroy) {
+				queuedToDestroy = true;
+			    GetComponent<Renderer>().enabled = false;
 			    Destroy(gameObject, clip.length);
 			}
 		} else if (col.tag == "Terrain") {
 			Debug.Log("Terrain Hit");
-		    Destroy(gameObject);
+		     if (!queuedToDestroy) {
+				 Destroy(gameObject);
+			 }
 		}
 
 	} 
