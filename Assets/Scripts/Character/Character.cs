@@ -39,6 +39,7 @@ public class Character : MonoBehaviour, OnLevelGoal
     private GameObject slap;
 
     public AudioSource spewSound;
+    public AudioSource slapSound;
 
     private bool facingRight = true;
 
@@ -145,6 +146,7 @@ public class Character : MonoBehaviour, OnLevelGoal
         Vector3 newSize = slap.transform.localScale;
         newSize.x = slapLength;
         slap.transform.localScale = newSize;
+        slapSound.Play();
 
         StartCoroutine(DestroySlap(slap));
     }
