@@ -27,13 +27,15 @@ public class Spew : MonoBehaviour {
 
 		// If it hit an ememy
 		if(col.tag == "Enemy") {
+			collisionCount++;
 			col.gameObject.GetComponent<EnemyStats>().TakeDamage(playerScript.spewDamage);
 			Debug.Log("Enemy Hit");
 
 		    AudioClip clip = spewHitClips[Random.Range(0,spewHitClips.Length)];
 			audioSource.PlayOneShot(clip);
 			GetComponent<Renderer>().enabled = false;
-			if (collisionCount <= maxCollisions) {
+			
+			if (collisionCount >= maxCollisions) {
 			    Destroy(gameObject, clip.length);
 			}
 		} else if (col.tag == "Terrain") {

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0abe809e2dc21f4d85b83fe1b011b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCollisions: 1
+  maxCollisions: 2
   audioSource: {fileID: 82977902704621440}
   spewHitClips:
   - {fileID: 8300000, guid: 4388746070b1c0643a57141fe11f28be, type: 3}
