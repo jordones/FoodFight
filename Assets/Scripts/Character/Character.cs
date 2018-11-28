@@ -278,9 +278,16 @@ public class Character : MonoBehaviour, OnLevelGoal
     }
 
     public void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.layer == LayerMask.NameToLayer("Ground")
-            || col.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
-            grounded = true;
+        if(col.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+                grounded = true;
+        } else if (col.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        {
+            // Prevent infintily jumping if an enemy is on your head
+            if (transform.position.y > col.transform.position.y)
+            {
+                grounded = true;
+            }
         }
     }
 
