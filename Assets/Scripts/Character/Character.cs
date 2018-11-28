@@ -42,6 +42,8 @@ public class Character : MonoBehaviour, OnLevelGoal
     public AudioSource slapSound;
 
     private bool facingRight = true;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     // Use this for initialization
     void Awake()
@@ -52,6 +54,8 @@ public class Character : MonoBehaviour, OnLevelGoal
         {
             instance = this;
             rb2d = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            spriteRenderer = GetComponent<SpriteRenderer>();   
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -76,10 +80,12 @@ public class Character : MonoBehaviour, OnLevelGoal
         // Jump, only if the character is on the ground
         if (Input.GetButtonDown("Jump") && grounded)
         {
+            animator.SetTrigger("Jump");
             jump = true;
         }
         if (Input.GetButtonDown("Spew"))
         {
+            animator.SetTrigger("Spew");
             handleSpew();
         }
         else if (Input.GetButtonDown("Slap") && !slapping)
@@ -88,6 +94,7 @@ public class Character : MonoBehaviour, OnLevelGoal
         }
         else if (Input.GetButtonDown("Possess"))
         {
+            animator.SetTrigger("Posess");
             handlePossess();
         }
         handleSlapCollosion();
@@ -191,6 +198,15 @@ public class Character : MonoBehaviour, OnLevelGoal
         float h = Input.GetAxis("Horizontal");
         // anim.SetFloat("Speed", Mathf.Abs(h));
 
+        if (h == 0) {
+            animator.ResetTrigger("Walk");
+            animator.SetTrigger("Idle");
+        }
+        else {
+            animator.ResetTrigger("Idle");
+            animator.SetTrigger("Walk");
+        }
+
         if (h * rb2d.velocity.x < maxSpeed)
         {
             rb2d.AddForce(Vector2.right * h * moveForce);
@@ -225,6 +241,7 @@ public class Character : MonoBehaviour, OnLevelGoal
     void Flip()
     {
         facingRight = !facingRight;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     public void TakeDamage(int amount)

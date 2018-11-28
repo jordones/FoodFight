@@ -676,8 +676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5584a9c8e8634caae65a1bb2bbd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
+  maxHealth: 10000
+  health: 10000
   healthMinus: 5
   speed: 5
   spewSpeed: 20

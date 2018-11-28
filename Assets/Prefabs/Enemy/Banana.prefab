@@ -44,6 +44,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1194608126926690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4844832682184802}
+  - component: {fileID: 58098026420177724}
+  m_Layer: 13
+  m_Name: PossessCheck
+  m_TagString: Posessable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1253499088408384
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +75,7 @@ GameObject:
   - component: {fileID: 114470170045566304}
   - component: {fileID: 95733653880577016}
   - component: {fileID: 114533454522204380}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Banana
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -150,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 1533882107431720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4034577521981990}
   m_Father: {fileID: 4948607785594770}
@@ -162,12 +178,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1253499088408384}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.451433, y: -0.33964205, z: -0.9759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.423317, y: -2.9225004, z: 0.7292218}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4948607785594770}
   - {fileID: 4443845056273096}
+  - {fileID: 4844832682184802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -210,6 +227,19 @@ Transform:
   m_Father: {fileID: 4160642651733920}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4844832682184802
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194608126926690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4160642651733920}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4948607785594770
 Transform:
   m_ObjectHideFlags: 1
@@ -246,6 +276,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58098026420177724
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194608126926690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!61 &61566155642256966
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -317,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   maxHealth: 176
-  health: 100
+  health: 35
   attack: 25
   animationHelper: {fileID: 114533454522204380}
   animatable: 1
@@ -357,10 +402,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   moveForce: 50
-  behaviour: 0
+  behaviour: 1
   enemyVision: {fileID: 114964203531591532}
   animationHelper: {fileID: 114533454522204380}
   facingRight: 1
+  stunTime: 2
 --- !u!114 &114964203531591532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d662268d09a484189ea6ee0c0fa1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   character: {fileID: 0}
 --- !u!212 &212112840749096348
 SpriteRenderer:
@@ -501,7 +547,7 @@ SpriteRenderer:
   m_SortingLayerID: 903851429
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4400452917df34a8288db21aceb82d6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: def6ab150ef354c519d22fc8e38948ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -77,13 +77,15 @@ public class EggsBehaviour : MonoBehaviour
         SingleAttack(tripleAttackSpeed, -5);
 
     }
-
+    
     void SingleAttack(float speed, float degOffset)
     {
-        Vector3 targetPosition = eyes.character.transform.position;
-        targetPosition.y += degOffset;
-        Rigidbody2D spew = Instantiate(projectileFab, transform.position, transform.rotation) as Rigidbody2D;
-        spew.velocity = (targetPosition - transform.position).normalized * speed;
+        if(eyes.character != null) {
+            Vector3 targetPosition = eyes.character.transform.position;
+            targetPosition.y += degOffset;
+            Rigidbody2D spew = Instantiate(projectileFab, transform.position, transform.rotation) as Rigidbody2D;
+            spew.velocity = (targetPosition - transform.position).normalized * speed;
+        }
     }
 
     bool CanSeeCharacter()

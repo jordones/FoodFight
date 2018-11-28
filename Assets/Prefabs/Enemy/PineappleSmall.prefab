@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 95734234312452518}
   - component: {fileID: 114742964601787674}
   m_Layer: 12
-  m_Name: Pineapple
+  m_Name: PineappleSmall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485963298765130}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.451433, y: -0.33964205, z: -0.9759}
+  m_LocalPosition: {x: -20.083242, y: 1.3102217, z: -0.9759}
   m_LocalScale: {x: 1, y: 1, z: 2.0653}
   m_Children:
   - {fileID: 4845950989381738}
@@ -258,7 +258,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -269,7 +269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 1.25}
   m_EdgeRadius: 0
 --- !u!70 &70559947252941494
 CapsuleCollider2D:
@@ -351,6 +351,8 @@ MonoBehaviour:
   behaviour: 0
   enemyVision: {fileID: 114127015822768036}
   animationHelper: {fileID: 114742964601787674}
+  facingRight: 1
+  stunTime: 2
 --- !u!114 &114742964601787674
 MonoBehaviour:
   m_ObjectHideFlags: 1

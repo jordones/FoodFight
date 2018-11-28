@@ -330,11 +330,11 @@ MonoBehaviour:
   enemySpawnRate: 0.2
   appearingTime: 0.05
   hidingTime: 0.05
-  spawnFab: {fileID: 1866799536023812, guid: 0e5be40f595f0413ea453ffdaf9c7723, type: 2}
+  spawnFab: {fileID: 1485963298765130, guid: 2253c325e0bb94514b16dd375017d5c6, type: 2}
   appearRange: 10
   maxEnemiesToSpawn: 4
   minEnemiesToSpawn: 2
-  battleRange: 10
+  battleRange: 15
 --- !u!114 &114133706093033524
 MonoBehaviour:
   m_ObjectHideFlags: 1

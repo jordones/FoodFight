@@ -23,6 +23,7 @@ public class RunCompleted : MonoBehaviour
         for (int i = 0; i < items.Count; i++)
         {
             unlockedItemWrapper[i].sprite = items[i];
+            unlockedItemWrapper[i].enabled = true;
         } 
     }
 
