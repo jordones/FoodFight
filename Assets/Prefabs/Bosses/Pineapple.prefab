@@ -309,6 +309,8 @@ MonoBehaviour:
   maxHealth: 400
   health: 400
   attack: 40
+  animationHelper: {fileID: 0}
+  animatable: 0
   healthBar: {fileID: 114133706093033524}
 --- !u!114 &114082413833143618
 MonoBehaviour:
@@ -328,7 +330,7 @@ MonoBehaviour:
   enemySpawnRate: 0.2
   appearingTime: 0.05
   hidingTime: 0.05
-  spawnFab: {fileID: 1184298485794042, guid: 08a48a756b9293143aa78b2cae9c7c14, type: 2}
+  spawnFab: {fileID: 1866799536023812, guid: 0e5be40f595f0413ea453ffdaf9c7723, type: 2}
   appearRange: 10
   maxEnemiesToSpawn: 4
   minEnemiesToSpawn: 2

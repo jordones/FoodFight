@@ -70,18 +70,15 @@ public class SimpleMovement : MonoBehaviour {
 		int dir = 0;
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-                Debug.Log("Idling");
                 animationHelper.ToggleAnimation(ANIMATION_STATE.IDLE);
                 break;
             
             case MOVE_DIRECTION.LEFT:
-                Debug.Log("Walk Left");
                 animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = -1;
                 break;
             
             case MOVE_DIRECTION.RIGHT:
-                Debug.Log("Walk Right");
                 animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = 1;
                 break;
