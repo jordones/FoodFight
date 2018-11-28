@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 58026595500841964}
   - component: {fileID: 114178610465694754}
   m_Layer: 0
-  m_Name: SpewSpeed
+  m_Name: SlapLength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

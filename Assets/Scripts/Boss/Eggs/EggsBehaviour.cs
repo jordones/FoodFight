@@ -5,11 +5,9 @@ using UnityEngine;
 public class EggsBehaviour : MonoBehaviour
 {
     public EggsEyes eyes;
-
     private int attackType;
     private float minAttackTime = 0.5f;
     private float maxAttackTime = 3f;
-
     private float minJumpTime = 2f;
     private float maxJumpTime = 5f;
     private float singleAttackSpeed = 10f;
@@ -23,6 +21,7 @@ public class EggsBehaviour : MonoBehaviour
     // I want a triple slower attack
     // Maybe burst different types of attacks in a window
     // jumps randomly
+
 
     // Use this for initialization
     void Awake()

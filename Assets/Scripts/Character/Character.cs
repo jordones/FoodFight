@@ -25,6 +25,8 @@ public class Character : MonoBehaviour, OnLevelGoal
     public bool slapDebounce = false;
     private bool grounded = true;
 
+    public float slapLength = 3.0f;
+
     private DisplayItems itemsUI;
 
     public List<Item> inventory = new List<Item>();
@@ -33,6 +35,8 @@ public class Character : MonoBehaviour, OnLevelGoal
     public Rigidbody2D spewFab;
     public GameObject slapFab;
     public GameObject possessFab;
+
+    private GameObject slap;
 
     private bool facingRight = true;
 
@@ -120,20 +124,25 @@ public class Character : MonoBehaviour, OnLevelGoal
     void handleSlap()
     {
         slapping = true;
-        GameObject slap;
         Vector3 slapPos = transform.position;
-        if (facingRight)
-        {
-            slapPos.x += slapFab.transform.localScale.x / 2;
+        int dir = 0;
+        if (facingRight) {
+            dir = 1;
             slap = Instantiate(slapFab, slapPos, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
-            slap.transform.parent = gameObject.transform;
-        }
-        else
-        {
-            slapPos.x -= slapFab.transform.localScale.x / 2;
+        } else {
+            dir = -1;
             slap = Instantiate(slapFab, slapPos, Quaternion.Euler(new Vector3(0, 0, 180f))) as GameObject;
-            slap.transform.parent = gameObject.transform;
         }
+        slap.transform.parent = gameObject.transform;
+
+        Vector3 lslapPos = slap.transform.localPosition;
+        lslapPos.x += dir*slapLength / 2;
+        slap.transform.localPosition = lslapPos;
+
+        Vector3 newSize = slap.transform.localScale;
+        newSize.x = slapLength;
+        slap.transform.localScale = newSize;
+
         StartCoroutine(DestroySlap(slap));
     }
 
@@ -147,11 +156,11 @@ public class Character : MonoBehaviour, OnLevelGoal
             // Added 0.01f to extend hitbox slightly past visual slap box
             if (facingRight)
             {
-                slapPos.x += slapFab.transform.localScale.x + 0.1f;
+                slapPos.x += slap.transform.lossyScale.x + 0.1f;
             }
             else
             {
-                slapPos.x -= slapFab.transform.localScale.x + 0.1f;
+                slapPos.x -= slap.transform.lossyScale.x + 0.1f;
             }
             RaycastHit2D[] slapHits = Physics2D.LinecastAll(transform.position, slapPos, 1 << LayerMask.NameToLayer("Enemies"));
 

@@ -14,7 +14,7 @@ public class Slap : MonoBehaviour {
         Debug.Log("Slap Hit!");
         Debug.Log(col.tag);
 		if (col.tag == "Enemy") {
-			// col.gameObject.GetComponent<EnemyStats>.TakeDamage();
+			// col.gameObject.GetComponent<EnemyStats>().TakeDamage(50);
 			Debug.Log("Slapped an Enemy!");
 		}
 	}

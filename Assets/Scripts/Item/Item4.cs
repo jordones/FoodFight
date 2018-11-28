@@ -15,8 +15,9 @@ public class Item4 : Item {
 	}
 
 	public override void OnPickup(Character character) {
-		Vector3 newSize = character.slapFab.transform.localScale;
-		newSize.x += 1f;
-		character.slapFab.transform.localScale = newSize;
+		character.slapLength += 1f;
+		// Vector3 newSize = character.slapFab.transform.localScale;
+		// newSize.x += 1f;
+		// character.slapFab.transform.localScale = newSize;
 	}
 }

@@ -6,26 +6,39 @@ public class SimpleMovement : MonoBehaviour {
 
     public float movementSpeed = 2.8f;
     public float moveForce = 50f;
-    public int fieldOfVision = 10;
     public BEHAVIOUR behaviour;
     private MOVE_DIRECTION moveDirection = MOVE_DIRECTION.NONE;
 
-	// Use this for initialization
-	void Awake () {
-		
-	}
+    public EnemyVision enemyVision;
+    public EnemyAnimationHelper animationHelper;
+
+
 
     void Update () {
+      
+        bool visionRight = false;
+        bool visionLeft = false;
 
-        Vector2 fieldLeft = transform.position;
-        fieldLeft.x -= fieldOfVision;
-
-        Vector2 fieldRight = transform.position;
-        fieldRight.x += fieldOfVision;
-
-
-        bool visionRight  = Physics2D.Linecast(transform.position, fieldRight, 1 << LayerMask.NameToLayer("Player"));
-        bool visionLeft = Physics2D.Linecast(transform.position, fieldLeft, 1 << LayerMask.NameToLayer("Player"));
+        if (enemyVision.active) {
+            if (enemyVision.character.transform.position.x > gameObject.transform.position.x) {
+                // player is to the right
+                visionRight = true;
+            }
+            else if (enemyVision.character.transform.position.x < gameObject.transform.position.x) {
+                // player is to the left
+                visionLeft = true;
+            }
+            else {
+                // player is in same x as enemy
+                visionRight = false;
+                visionLeft = false;
+            }
+        }
+        else {
+            // player is in same x as enemy
+            visionRight = false;
+            visionLeft = false;
+        }
 
         if (visionRight) {
             if (behaviour == BEHAVIOUR.AGGRO) {
@@ -57,13 +70,19 @@ public class SimpleMovement : MonoBehaviour {
 		int dir = 0;
         switch (moveDirection) {
             case MOVE_DIRECTION.NONE:
-                    break;
+                Debug.Log("Idling");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.IDLE);
+                break;
             
             case MOVE_DIRECTION.LEFT:
+                Debug.Log("Walk Left");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = -1;
                 break;
             
             case MOVE_DIRECTION.RIGHT:
+                Debug.Log("Walk Right");
+                animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = 1;
                 break;
         }
