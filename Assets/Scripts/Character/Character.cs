@@ -104,9 +104,12 @@ public class Character : MonoBehaviour, OnLevelGoal
             transform.position = enemyHit.transform.position;
             enemyHit.transform.position = tmp;
             // swap hp
-            int tempHp = enemyHit.GetComponent<EnemyStats>().health;
-            enemyHit.GetComponent<EnemyStats>().health = health;
+            EnemyStats enemy = enemyHit.GetComponent<EnemyStats>();
+            int tempHp = enemy.health;
+            enemy.health = health;
             health = tempHp;
+
+            enemyHit.GetComponent<SimpleMovement>().Stun();
         }
     }
 

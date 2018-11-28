@@ -14,7 +14,11 @@ public class SimpleMovement : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     public bool facingRight = true;
 
+    public float stunTime = 2f;
+    private BEHAVIOUR initialBehaviour;
+
     void Awake() {
+        initialBehaviour = behaviour;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -44,27 +48,29 @@ public class SimpleMovement : MonoBehaviour {
             visionLeft = false;
         }
 
-        if (visionRight) {
-            if (behaviour == BEHAVIOUR.AGGRO) {
-
-                moveDirection = MOVE_DIRECTION.RIGHT;
-            } else {
-
-                moveDirection = MOVE_DIRECTION.LEFT;
-            }
-        }
-        else if (visionLeft) {
-
-            if (behaviour == BEHAVIOUR.AGGRO) {
-
-                moveDirection = MOVE_DIRECTION.LEFT;
-            } else {
-
-                moveDirection = MOVE_DIRECTION.RIGHT;
-            }
-        }
-        else {
-            moveDirection = MOVE_DIRECTION.NONE;
+        switch(behaviour) {
+            case BEHAVIOUR.AGGRO:
+                if(visionRight) {
+                    moveDirection = MOVE_DIRECTION.RIGHT;
+                } else if (visionLeft) {
+                    moveDirection = MOVE_DIRECTION.LEFT;
+                } else {
+                    moveDirection = MOVE_DIRECTION.NONE;
+                }
+            break;
+            case BEHAVIOUR.FLEE:
+                if(visionRight) {
+                    moveDirection = MOVE_DIRECTION.LEFT;
+                } else if (visionLeft) {
+                    moveDirection = MOVE_DIRECTION.RIGHT;
+                } else {
+                    moveDirection = MOVE_DIRECTION.NONE;
+                }
+            break;
+            default:
+            case BEHAVIOUR.NEUTRAL:
+                moveDirection = MOVE_DIRECTION.NONE;
+            break;
         }
     }
 
@@ -106,6 +112,14 @@ public class SimpleMovement : MonoBehaviour {
         }   	
 	}
 
+    public void Stun() {
+        behaviour = BEHAVIOUR.NEUTRAL;
+        Invoke("RecoverFromStun", stunTime);
+    }
+    private void RecoverFromStun() {
+        behaviour = initialBehaviour;
+    }
+
     void Flip()
     {
         facingRight = !facingRight;
@@ -122,6 +136,7 @@ public class SimpleMovement : MonoBehaviour {
 
     public enum BEHAVIOUR {
         AGGRO,
-        FLEE
+        FLEE,
+        NEUTRAL
     }
 }
