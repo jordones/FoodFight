@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossSpawner : MonoBehaviour,  OnLevelGoal {
 
     public GameObject[] bossTypes;    // Number of each different boss type  
+    public GameObject boss;
     void Start()
     {
 		LevelManager.instance.subscribeToGoal(this);
@@ -12,10 +13,10 @@ public class BossSpawner : MonoBehaviour,  OnLevelGoal {
 
     void Spawn()
     {
-        GameObject boss = getRandomBoss();
+        GameObject bossFab = getRandomBoss();
         Debug.Log("Boss spawned is: " + boss);
 
-        Instantiate(boss, transform.position, transform.rotation);
+        boss = Instantiate(bossFab, transform.position, transform.rotation);
     }
 
     GameObject getRandomBoss()
@@ -26,5 +27,7 @@ public class BossSpawner : MonoBehaviour,  OnLevelGoal {
 
 	public void OnLevelGoal() {
 		Spawn();
+        Debug.Log(BossIndicator.instance);
+        BossIndicator.instance.boss = boss;
 	}
 }
