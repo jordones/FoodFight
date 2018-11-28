@@ -25,7 +25,7 @@ public class ItemPool: MonoBehaviour {
         }
     }
 
-    IEnumerator InitPool()
+    public IEnumerator InitPool()
     {
         yield return new WaitUntil(() => UserManager.instance != null && UserManager.instance.ready); //Wait until UserManager is initialized
         pool = UserManager.instance.items;

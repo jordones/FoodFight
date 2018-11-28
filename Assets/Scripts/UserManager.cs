@@ -19,6 +19,7 @@ public class UserManager : MonoBehaviour {
     private Firebase.Auth.FirebaseUser user;
     private Firebase.Database.DatabaseReference db;
     public bool ready = false;
+    public bool debug = false;
 
     public int deaths {get; set;} = 0;
     public int runs {get; set;} = 0;
@@ -136,7 +137,9 @@ public class UserManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeFirebase();
-            LoadLocal();
+            if (!debug) {
+                LoadLocal();
+            }
             ready = true;
         } else {
             Destroy(gameObject);
@@ -227,6 +230,8 @@ public class UserManager : MonoBehaviour {
         });
 
         yield return new WaitUntil(() => tDeaths.IsCompleted && tRuns.IsCompleted && tItems.IsCompleted);
+        Debug.Log("Syncing items to pool");
+        yield return StartCoroutine(ItemPool.instance.InitPool());
     }
 
     public void SaveLocal() {

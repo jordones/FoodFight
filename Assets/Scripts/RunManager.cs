@@ -22,6 +22,9 @@ public class RunManager : MonoBehaviour {
 	}
 
 	public void RunComplete() {
+		int runs = UserManager.instance.runs;
+		UserManager.instance.runs = runs+1;
+		
 		List<int> unlocked = ItemPool.instance.GetRandomLockedIds(3);
 
 		// Pass in new items to success screen
@@ -42,6 +45,8 @@ public class RunManager : MonoBehaviour {
 
 	public void RunFailed() {
 		// Cleanup
+		int failed = UserManager.instance.deaths;
+		UserManager.instance.deaths = failed+1;
 		CleanupPersistentObjects();
 	}
 
