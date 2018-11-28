@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: StrawberryAnimationController
+  m_Controller: {fileID: 9100000, guid: b24b035b2e02c4fb29b495c0c0584c34, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ff0ff91129bae49a785a80ae008e19b5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 099bebf5d835f497f8ba723efa11a357, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3b6893bc7717046088d9f067e4a7e5f2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 51d76b8a5337e4374a998f75f835d387, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 483f8ef3c50b14069bd40e86f995f4ff, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53ea14d5bdd124ef5a73423754793325, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2de76629d60c145e3855902fbec1a70e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b742a72a056bf484baee80422bd5c6ae, type: 2}
