@@ -13,9 +13,19 @@ public class ItemPicker : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(SpawnItems());
+    }
+
+    IEnumerator SpawnItems() {
+        int i = 0;
+        yield return new WaitUntil(() => ItemPool.instance != null && ItemPool.instance.ready);
+
+        List<GameObject> prefabs = ItemPool.instance.GetRandomUnlockedItems(transform.childCount);
         foreach (Transform itemStand in transform)
         {
-            StartCoroutine(Spawn(itemStand));
+            Debug.Log(itemStand);
+            Spawn(itemStand, prefabs[i]);
+            i++;
         }
     }
 
@@ -45,10 +55,10 @@ public class ItemPicker : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator Spawn(Transform itemStand)
+    private void Spawn(Transform itemStand, GameObject itemFab)
     {
-        yield return new WaitUntil(() => ItemPool.instance != null && ItemPool.instance.ready); //Wait until ItemPool is ready
-        GameObject itemFab = ItemPool.instance.GetRandomItem();
+         //Wait until ItemPool is ready
+
         Vector3 newPosition = itemStand.position;
         newPosition.y += 0.7f;
         GameObject item = Instantiate(itemFab, newPosition, itemStand.rotation);
