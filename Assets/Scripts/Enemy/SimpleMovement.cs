@@ -11,8 +11,12 @@ public class SimpleMovement : MonoBehaviour {
 
     public EnemyVision enemyVision;
     public EnemyAnimationHelper animationHelper;
+    private SpriteRenderer spriteRenderer;
+    public bool facingRight = true;
 
-
+    void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Update () {
       
@@ -76,10 +80,16 @@ public class SimpleMovement : MonoBehaviour {
             case MOVE_DIRECTION.LEFT:
                 animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
                 dir = -1;
+                if (facingRight) {
+                    Flip();
+                }
                 break;
             
             case MOVE_DIRECTION.RIGHT:
                 animationHelper.ToggleAnimation(ANIMATION_STATE.WALK);
+                if (!facingRight) {
+                    Flip();
+                }
                 dir = 1;
                 break;
         }
@@ -95,6 +105,12 @@ public class SimpleMovement : MonoBehaviour {
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * movementSpeed, rb2d.velocity.y);
         }   	
 	}
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+    }
 
     // Enumeration denoting the direction in which the enemy should be fleeing
     private enum MOVE_DIRECTION
