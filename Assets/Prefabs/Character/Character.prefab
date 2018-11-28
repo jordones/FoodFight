@@ -383,7 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
-  active: 1
   arrowRenderer: {fileID: 212214706394934188}
 --- !u!114 &114420665379697780
 MonoBehaviour:
@@ -408,20 +407,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5584a9c8e8634caae65a1bb2bbd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 149390
+  maxHealth: 100
+  health: 100
   healthMinus: 5
   speed: 5
-  spewSpeed: 30
-  spewDamage: 40
-  slapDamage: 100
+  spewSpeed: 20
+  spewDamage: 20
+  slapDamage: 50
   slapRange: 2
-  possessRange: 8
+  possessRange: 6
   moveForce: 51
   maxSpeed: 5
   jumpForce: 800
   slapping: 0
   slapDebounce: 0
+  slapLength: 3
   inventory:
   - {fileID: 114796449360617540}
   - {fileID: 114420665379697780}
