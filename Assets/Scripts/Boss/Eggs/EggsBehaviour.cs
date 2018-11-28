@@ -16,6 +16,7 @@ public class EggsBehaviour : MonoBehaviour
     public Rigidbody2D projectileFab;
     public float jumpForce = 500f;
     public Rigidbody2D rb2d;
+    public Animator animator;
     // I want a single fast attack
     // I want a double slower attack
     // I want a triple slower attack
@@ -93,6 +94,7 @@ public class EggsBehaviour : MonoBehaviour
     void Jump()
     {
         print("JUMPING ");
+        animator.SetTrigger("Jump");
         rb2d.AddForce(new Vector2(0f, jumpForce));
         
         float randomTime = Random.Range(minJumpTime, maxJumpTime);
