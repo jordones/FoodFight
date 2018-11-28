@@ -10,7 +10,6 @@ public class EnemyVision : MonoBehaviour {
     {
         if (col.tag == "Character")
         {
-            Debug.Log("Enemy can see character");
             active = true;
             character = col.gameObject;
         }
@@ -20,8 +19,6 @@ public class EnemyVision : MonoBehaviour {
     {
         if (col.tag == "Character")
         {
-            Debug.Log("Enemy can no longer see character");
-
             active = false;
         }
     }

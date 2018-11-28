@@ -9,6 +9,8 @@ public class EnemyStats : TypedEnemy
     public int health = 100;
     public int attack = 25;
     public EnemyAnimationHelper animationHelper;
+    private bool alive = true;
+    public bool animatable = false;
 
     [SerializeField] private HealthBar healthBar;
 
@@ -24,7 +26,9 @@ public class EnemyStats : TypedEnemy
     {
         if (health <= 0)
         {
-            animationHelper.TriggerDie();
+            if (animatable) {
+                animationHelper.TriggerDie();
+            }
             Die();
         }
     }
@@ -45,18 +49,22 @@ public class EnemyStats : TypedEnemy
         if (collider.tag == "Character")
         {
             Debug.Log(animationHelper);
-            Debug.Log("Attacking");
-            animationHelper.TriggerAttack();
+            if (animatable) {
+                animationHelper.TriggerAttack();
+            }
             collider.gameObject.GetComponent<Character>().TakeDamage(attack);
         }
     }
 
     private void Die()
     {
-        Debug.Log("Enemy Death");
-        Destroy(gameObject, 0.5f);
-        LevelManager.instance.Killed(this);
-        // print("Enemy destroyed");
+        if (alive) {
+            //Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
+            LevelManager.instance.Killed(this);
+            // print("Enemy destroyed");
+            alive = false;
+        }
     }
 
     void OnGUI()
