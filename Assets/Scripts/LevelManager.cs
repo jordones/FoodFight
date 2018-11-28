@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour {
 
 			Debug.Log("Moving " + character + " to " + spawnPoint);
 			character.transform.position = spawnPoint.transform.position;
+			Character stats = character.GetComponent<Character>() as Character;
+			stats.health = stats.maxHealth;
         } else {
             Destroy(gameObject);
         }
