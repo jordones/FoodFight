@@ -43,6 +43,16 @@ public class ItemPool: MonoBehaviour {
         return items[pool[selected]];
     }
 
+    public List<int> GetRandomUnlockedIds(int n) {
+        System.Random rnd = new System.Random();
+
+        return pool.OrderBy(x => rnd.Next()).Take(n).ToList();
+    }
+
+    public List<GameObject> GetRandomUnlockedItems(int n) {
+        return GetRandomUnlockedIds(n).Select(x => items[x]).ToList();
+    }
+
     public List<int> GetRandomLockedIds(int n) {
         System.Random rnd = new System.Random();
 
