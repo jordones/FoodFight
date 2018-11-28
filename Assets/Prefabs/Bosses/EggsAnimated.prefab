@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114910058675679102}
   - component: {fileID: 114231536768945372}
   m_Layer: 12
-  m_Name: Eggs 1
+  m_Name: EggsAnimated
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

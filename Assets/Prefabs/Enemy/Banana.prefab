@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114470170045566304}
   - component: {fileID: 95733653880577016}
   - component: {fileID: 114533454522204380}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Banana
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -360,6 +360,7 @@ MonoBehaviour:
   behaviour: 0
   enemyVision: {fileID: 114964203531591532}
   animationHelper: {fileID: 114533454522204380}
+  facingRight: 1
 --- !u!114 &114964203531591532
 MonoBehaviour:
   m_ObjectHideFlags: 1
