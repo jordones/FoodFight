@@ -105,8 +105,8 @@ public class Character : MonoBehaviour, OnLevelGoal
             int tempHp = enemy.health;
             enemy.health = health;
             health = tempHp;
-            SimpleMovement enemtMovement = enemyHit.GetComponent<SimpleMovement>();
-            enemtMovement.Stun();
+
+            enemyHit.GetComponent<SimpleMovement>().Stun();
         }
     }
 
