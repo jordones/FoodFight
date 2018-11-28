@@ -8,7 +8,9 @@ public class EnemySpawner : MonoBehaviour
     private bool running = false;
     public bool active = false;
     public float spawnTime = 3f;
+    public int maxSpawn = 3;
     public GameObject[] enemyTypes;    // Number of each different enemy type  
+    private List<GameObject> spawned = new List<GameObject>();
     void Start()
     {
     }
@@ -21,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
         } else {
             StopSpawner();
         }
+        spawned.RemoveAll(x => x == null);
     }
 
     public void StartSpawner() {
@@ -54,10 +57,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn()
     {
-        GameObject enemy = getRandomEnemy();
-        Debug.Log("Enemy spawned is: " + enemy);
+        if (spawned.Count < maxSpawn) {
+            GameObject enemy = getRandomEnemy();
+            Debug.Log("Enemy spawned is: " + enemy);
 
-        Instantiate(enemy, transform.position, transform.rotation);
+            GameObject spawnedEnemy = Instantiate(enemy, transform.position, transform.rotation);
+            spawned.Add(spawnedEnemy);
+        }
     }
 
     GameObject getRandomEnemy()
